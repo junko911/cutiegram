@@ -1,7 +1,10 @@
 <%= form_for @post do |f| %>
   <%= f.label :user_id %>
   <%= f.collection_select :user_id, User.all, :id, :username %>
-  <!-- image upload -->
+  <div>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
   <%= f.label :description %>
   <%= f.text_field :description %>
 

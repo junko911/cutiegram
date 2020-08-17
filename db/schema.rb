@@ -23,7 +23,11 @@ ActiveRecord::Schema.define(version: 2020_08_17_152611) do
   create_table "posts", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "description"
-    t.integer "likes"
+    t.integer "likes", default: 0
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
