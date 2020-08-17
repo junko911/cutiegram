@@ -4,6 +4,7 @@ class CreatePosts < ActiveRecord::Migration[6.0]
       t.belongs_to :user, null: false, foreign_key: true
       t.string :description
       t.integer :likes, :default => 0
+      t.attachment :image
 
       t.timestamps
     end

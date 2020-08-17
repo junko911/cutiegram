@@ -1,5 +1,5 @@
 <h1>Post Show</h1>
-<!-- image -->
+<%= link_to (image_tag(@post.image.url(:thumb)) if @post.image.exists?), user_path(@post.user) %>
 <p>@<%= @post.user.username %></p>
 <p>Likes: <%= @post.likes %></p>
 <p>Description: <%= @post.description %></p>
@@ -14,7 +14,7 @@
   <ul>
     <% @post.comments.each do |comment| %>
       <li>
-        <p><%= comment.user %></p>
+        <p>@<%= comment.user.username %></p>
         <p><%= comment.content %></p>
       </li>
     <% end %>
@@ -23,8 +23,6 @@
 
 <h3>New Comment:</h3>
 <%= form_for [@post, Comment.new] do |f| %>
-  <%= f.hidden_field :post_id %>
-
   <%= f.label :user_id %>
   <%= f.collection_select :user_id, User.all, :id, :username %>
 
