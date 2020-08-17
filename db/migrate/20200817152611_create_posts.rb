@@ -3,7 +3,8 @@ class CreatePosts < ActiveRecord::Migration[6.0]
     create_table :posts do |t|
       t.belongs_to :user, null: false, foreign_key: true
       t.string :description
-      t.integer :likes
+      t.integer :likes, :default => 0
+      t.attachment :image
 
       t.timestamps
     end
