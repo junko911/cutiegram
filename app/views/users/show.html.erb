@@ -3,24 +3,7 @@
 <div id='posts'>
     <% @user.posts.each do |post| %>
         <div class='post'>
-            <%= link_to image_tag(post.image.url), post_path(post) %>
-            <!--<%= post.content%>
-            <div class='comments'>
-                <%= post.comments.each do |comment| %>
-                    <strong><%= comment.user %></strong> <%= comment.content%>
-                <% end %>
-            </div>
-            <div class='new-comment'>
-                <%= form_for(post.comments.build) do |comment_builder| %>
-                    <%= comment_builder.hidden_field :post_id %>
-                    <%= collection_select :user_id, @users, :id, :username %>
-
-                    <%= comment_builder.label :content %>
-                    <%= comment_builder.text_area :content %>
-
-                    <%= comment_builder.submit "Reply" %>
-                <% end %>
-            </div>-->
+            <%= link_to (image_tag(post.image.url) if post.image.exists?), post_path(post) %>
         </div>
     <% end %>
 </div>

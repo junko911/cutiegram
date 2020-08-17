@@ -1,0 +1,17 @@
+<h1>Welcome!</h1>
+
+<div>
+<h2>Search for a particular user here: </h2>
+<%= form_tag users_path, method: :get do %>
+  <p>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Search", username: nil %>
+  </p>
+<% end %>
+
+<% if @users %>
+    <% @users.each do |user| %>
+        <p><%= link_to user.username, user_path(user) %> - <%= user.posts.count %><%= " post".pluralize(user.posts.count) %> </p>
+    <% end %>
+<% end %>
+</div>

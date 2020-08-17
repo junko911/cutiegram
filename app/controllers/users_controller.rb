@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
-    before_action :find_user, except: [:new, :create]
+    before_action :find_user, except: [:index, :new, :create]
+    def index
+        @users = User.search(params[:query])
+        render :index
+    end
+
     def show
         @users = User.all
     end
@@ -38,7 +43,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:username)
+        params.require(:user).permit(:username, :query)
     end
 
     def find_user
