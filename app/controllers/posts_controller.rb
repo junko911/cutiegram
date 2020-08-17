@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :find_post, only: [:show, :edit, :update, :destroy]
+  before_action :find_post, only: [:show, :edit, :update, :destroy, :like]
 
   def new
     @post = Post.new
@@ -27,6 +27,12 @@ class PostsController < ApplicationController
     user = @post.user
     @post.destroy
     redirect_to user_path(user) #redirect to user show page
+  end
+
+  def like
+    @post.increment!(:likes)
+
+    redirect_to post_path(@post)
   end
 
   private
