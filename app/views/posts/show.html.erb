@@ -1,0 +1,17 @@
+<h1>Post Show</h1>
+<!-- image -->
+<p><%= @post.user.username %></p>
+<p><%= @post.description %></p>
+<p><%= @post.created_at %></p>
+
+<h3>Comments:</h3>
+<ul>
+  <% @post.comments.each do |comment| %>
+    <li>
+      <p><%= comment.user %></p>
+      <p><%= comment.content %></p>
+    </li>
+  <% end %>
+</ul>
+
+<p><%= link_to 'Go back to User page', user_path(@post.user) %></p>
