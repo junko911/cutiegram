@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :posts, except: [:index]
   
   resources :posts do
+    resources :comments
     member do
        patch :like
     end

@@ -17,8 +17,8 @@
 </ul>
 
 <h3>New Comment:</h3>
-<%= form_for new_comment_path do |f| %>
-  <%= f.hidden_field :post_id, value: @post.id %>
+<%= form_for post_comments(@post, Comment.new) do |f| %>
+  <%= f.hidden_field :post_id %>
 
   <%= f.label :user_id %>
   <%= f.collection_select :user_id, User.all, :id, :username %>
