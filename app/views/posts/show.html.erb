@@ -4,6 +4,8 @@
 <p><%= @post.description %></p>
 <p><%= @post.created_at %></p>
 
+<%= button_to 'Like', like_post_path(@post), method: :patch %>
+
 <h3>Comments:</h3>
 <ul>
   <% @post.comments.each do |comment| %>
