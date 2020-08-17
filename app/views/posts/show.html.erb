@@ -1,24 +1,28 @@
 <h1>Post Show</h1>
 <!-- image -->
-<p><%= @post.user.username %></p>
-<p><%= @post.likes %></p>
-<p><%= @post.description %></p>
-<p><%= @post.created_at %></p>
+<p>@<%= @post.user.username %></p>
+<p>Likes: <%= @post.likes %></p>
+<p>Description: <%= @post.description %></p>
+<p>Posted: <%= @post.created_at %></p>
 
 <%= button_to 'Like', like_post_path(@post), method: :patch %>
 
 <h3>Comments:</h3>
-<ul>
-  <% @post.comments.each do |comment| %>
-    <li>
-      <p><%= comment.user %></p>
-      <p><%= comment.content %></p>
-    </li>
-  <% end %>
-</ul>
+<% if @post.comments.blank? %>
+  <p>Thers is no comment yet.</p>
+<% else %>
+  <ul>
+    <% @post.comments.each do |comment| %>
+      <li>
+        <p><%= comment.user %></p>
+        <p><%= comment.content %></p>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
 
 <h3>New Comment:</h3>
-<%= form_for post_comments_path(@post, Comment.new) do |f| %>
+<%= form_for [@post, Comment.new] do |f| %>
   <%= f.hidden_field :post_id %>
 
   <%= f.label :user_id %>
@@ -27,7 +31,7 @@
   <%= f.label :content %>
   <%= f.text_area :content %>
 
-  <%= f.submit %>
+  <%= f.submit 'Comment' %>
 <% end %>
 
 <p><%= link_to 'Edit', edit_post_path(@post) %></p>
