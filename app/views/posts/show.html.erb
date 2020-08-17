@@ -14,4 +14,17 @@
   <% end %>
 </ul>
 
+<h3>New Comment:</h3>
+<%= form_for new_comment_path do |f| %>
+  <%= f.hidden_field :post_id, value: @post.id %>
+
+  <%= f.label :user_id %>
+  <%= f.collection_select :user_id, User.all, :id, :username %>
+
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+
+  <%= f.submit %>
+<% end %>
+
 <p><%= link_to 'Go back to User page', user_path(@post.user) %></p>
