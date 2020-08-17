@@ -1,0 +1,35 @@
+<h1>Post Show</h1>
+<!-- image -->
+<p><%= @post.user.username %></p>
+<p><%= @post.likes %></p>
+<p><%= @post.description %></p>
+<p><%= @post.created_at %></p>
+
+<%= button_to 'Like', like_post_path(@post), method: :patch %>
+
+<h3>Comments:</h3>
+<ul>
+  <% @post.comments.each do |comment| %>
+    <li>
+      <p><%= comment.user %></p>
+      <p><%= comment.content %></p>
+    </li>
+  <% end %>
+</ul>
+
+<h3>New Comment:</h3>
+<%= form_for post_comments_path(@post, Comment.new) do |f| %>
+  <%= f.hidden_field :post_id %>
+
+  <%= f.label :user_id %>
+  <%= f.collection_select :user_id, User.all, :id, :username %>
+
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+
+  <%= f.submit %>
+<% end %>
+
+<p><%= link_to 'Edit', edit_post_path(@post) %></p>
+<p><%= link_to 'Delete', post_path(@post), method: :delete %></p>
+<p><%= link_to 'Go back to User page', user_path(@post.user) %></p>
