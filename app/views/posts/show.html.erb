@@ -1,6 +1,7 @@
 <h1>Post Show</h1>
 <!-- image -->
 <p><%= @post.user.username %></p>
+<p><%= @post.likes %></p>
 <p><%= @post.description %></p>
 <p><%= @post.created_at %></p>
 
@@ -17,7 +18,7 @@
 </ul>
 
 <h3>New Comment:</h3>
-<%= form_for post_comments(@post, Comment.new) do |f| %>
+<%= form_for post_comments_path(@post, Comment.new) do |f| %>
   <%= f.hidden_field :post_id %>
 
   <%= f.label :user_id %>
