@@ -1,0 +1,9 @@
+<div class="search-results">
+<h2>Your search results: </h2>
+
+<% if @users %>
+    <% @users.each do |user| %>
+        <p><%= link_to user.username, user_path(user) %> - <%= user.posts.count %><%= " post".pluralize(user.posts.count) %> </p>
+    <% end %>
+<% end %>
+</div>
