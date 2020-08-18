@@ -20,18 +20,27 @@
   </head>
 
   <body>
-        
-    <% @user.posts.each do |post| %>
-        <div class="card text-center rounded-left mx-auto mt-4" style="width: 18rem;">
-            <div class="card" style="width: 18rem;">
-                <%= link_to (image_tag(post.image.url, class: "card-img-top")), post_path(post)%>
-                <div class="card-body">
-                    <p class="card-text"> <%=post.description%> </p>
-                </div>
-            </div>
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+          <svg class=“bd-placeholder-img card-img-top” width=“100%” height=“225” xmlns=“http://www.w3.org/2000/svg” preserveAspectRatio=“xMidYMid slice” focusable=“false” role=“img” aria-label=“Placeholder: Thumbnail”><title>Placeholder</title><rect width=“100%” height=“100%” fill=“#55595C”/><text x=“50%” y=“50%” fill=“#ECEEEF” dy=“.3em”>Thumbnail</text></svg>
+            <% @user.posts.each do |post| %>
+                
+                    <div class="card text-center rounded-left mt-4 col" style="width: 100; height: 200">
+                        <%= link_to (image_tag(post.image.url, class: "card-img-top")), post_path(post)%>
+                        <div class="card-body">
+                            <p class="card-text"> <%=post.description%> </p>
+                        </>
+                    </div>
+              
+            <% end %>
+          </div>
         </div>
-    <% end %>
-        
+      </div>
+    </div>
+  </div>
     <%= yield %>
   </body>
 </html>
