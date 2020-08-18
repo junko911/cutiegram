@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'users#new'
   resources :post_tags
   resources :tags
   resources :posts, except: [:index]
