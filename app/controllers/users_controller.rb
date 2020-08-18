@@ -22,16 +22,14 @@ class UsersController < ApplicationController
         end
     end
 
-    def edit
-    end
-
     def update
         @user.update(user_params)
-        if user.valid?
+        if @user.valid?
             redirect_to user_path(@user)
         else
-            flash[:errors] = @user.errors.full_messages
-            redirect_to edit_user_path(@user)
+            # flash[:errors] = @user.errors.full_messages
+            # redirect_to edit_user_path(@user)
+            render :edit
         end
     end
 
