@@ -18,7 +18,7 @@ class UsersController < ApplicationController
         if @user.valid?
             redirect_to user_path(@user)
         else
-            redirect_to new_user_path
+            render :new
         end
     end
 
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:username, :query)
+        params.require(:user).permit(:username, :password, :password_confirmation, :query)
     end
 
     def find_user
