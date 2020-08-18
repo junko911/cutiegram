@@ -20,27 +20,23 @@
   </head>
 
   <body>
-  <div class="album py-5 bg-light">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-          <svg class=“bd-placeholder-img card-img-top” width=“100%” height=“225” xmlns=“http://www.w3.org/2000/svg” preserveAspectRatio=“xMidYMid slice” focusable=“false” role=“img” aria-label=“Placeholder: Thumbnail”><title>Placeholder</title><rect width=“100%” height=“100%” fill=“#55595C”/><text x=“50%” y=“50%” fill=“#ECEEEF” dy=“.3em”>Thumbnail</text></svg>
-            <% @user.posts.each do |post| %>
-                
-                    <div class="card text-center rounded-left mt-4 col" style="width: 100; height: 200">
-                        <%= link_to (image_tag(post.image.url, class: "card-img-top")), post_path(post)%>
-                        <div class="card-body">
-                            <p class="card-text"> <%=post.description%> </p>
-                        </>
-                    </div>
-              
-            <% end %>
-          </div>
-        </div>
+    <div class="border-bottom border-secondary mx-auto mt-4 modal-dialog-centered justify-content-center" style="width: 25%; height: 75px">
+      <div class="float-left ml-2">
+        <h2 class="card-title"> <%= @user.username %> </h2>
+      </div>
+      <div class="float-right ml-5">
+        <h4 class="card-title"> <%= @user.num_likes %><%= " like".pluralize(@user.num_likes) %> total </h4>
       </div>
     </div>
-  </div>
+    <div class="container mt-5">
+      <div class="row">
+        <% @user.posts.each do |post| %>
+            <div class="col-sm-4 mb-4">
+              <%= link_to (image_tag(post.image.url, class: "card-img-top show")), post_path(post) %>
+            </div>
+        <% end %>
+      </div>
+    </div>
     <%= yield %>
   </body>
 </html>
