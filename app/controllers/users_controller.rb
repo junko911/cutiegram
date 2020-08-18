@@ -19,7 +19,7 @@ class UsersController < ApplicationController
         @user = User.create(user_params)
         if @user.valid?
             session[:user_id] = @user.id
-            redirect_to user_path(@user)
+            redirect_to posts_path
         else
             render :new
         end
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:username, :password, :password_confirmation, :query)
+        params.require(:user).permit(:username, :password, :query)
     end
 
     def find_user
