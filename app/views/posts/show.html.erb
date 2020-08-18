@@ -50,8 +50,7 @@
           </div>
           <div class="border-bottom border-secondary">
             <%= form_for [@post, Comment.new] do |f| %>
-              <%= f.label :user_id %>
-              <%= f.collection_select :user_id, User.all, :id, :username %>
+              <%= f.hidden_field :user_id, value: @current_user.id %>
 
               <%= f.text_area :content, placeholder: "Make a comment" %>
 
