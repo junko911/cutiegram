@@ -50,8 +50,6 @@
           </div>
           <div class="border-bottom border-secondary">
             <%= form_for [@post, Comment.new] do |f| %>
-              <%= f.hidden_field :user_id, value: @current_user.id %>
-
               <%= f.text_area :content, placeholder: "Make a comment" %>
 
               <%= f.submit 'Comment' %>
@@ -62,7 +60,6 @@
         </div>
       </div>
     </div>
-    <%= yield %>
   </body>
 </html>
 
