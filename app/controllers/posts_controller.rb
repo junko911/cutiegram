@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy, :like]
 
+  def index
+    @posts = Post.order('created_at DESC')
+  end
+
   def show
   end
 
@@ -9,9 +13,9 @@ class PostsController < ApplicationController
   end
   
   def create
-    @post = Post.new(post_params)
+    @post = Post.create(post_params)
 
-    if @post.save!
+    if @post.valid?
       redirect_to @post
     else
       render :new
