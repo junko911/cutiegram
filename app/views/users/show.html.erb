@@ -22,7 +22,7 @@
   <body>
         
     <% @user.posts.each do |post| %>
-        <div class="card text-center rounded-left mx-auto mt-3" style="width: 18rem;">
+        <div class="card text-center rounded-left mx-auto mt-4" style="width: 18rem;">
             <div class="card" style="width: 18rem;">
                 <%= link_to (image_tag(post.image.url, class: "card-img-top")), post_path(post)%>
                 <div class="card-body">
