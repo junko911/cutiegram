@@ -1,14 +1,39 @@
-<%= render 'shared/errors', object: @post %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FinalProject</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-<%= form_for @post do |f| %>
-  <%= f.label :user_id %>
-  <%= f.collection_select :user_id, User.all, :id, :username %>
-  <div>
-    <%= f.label :image %>
-    <%= f.file_field :image %>
-  </div>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <%= f.submit %>
-<% end %>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  </head>
+  <body>
+    <%= render 'shared/errors', object: @post %>
+
+    <%= form_for @post do |f| %>
+      <div class="form-group">
+        <%= f.label :user_id %>
+        <%= f.collection_select :user_id, User.all, :id, :username %>
+        <br><br>
+        <%= f.label "Please choose an image to upload: " %>
+        <%= f.file_field :image %>
+        <br><br>
+        <%= f.label :description %>
+        <%= f.text_field :description, class: "form-control", placeholder:"Description" %>
+
+        <%= f.submit %>
+      </div>
+    <% end %>
+      <%= yield %>
+  </body>
+</html>
+
+
+
