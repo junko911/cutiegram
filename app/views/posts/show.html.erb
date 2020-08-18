@@ -1,33 +1,76 @@
-<h1>Post Show</h1>
-<%= link_to (image_tag(@post.image.url(:thumb)) if @post.image.exists?), user_path(@post.user) %>
-<p>@<%= link_to @post.user.username, user_path(@post.user) %></p>
-<p>Likes: <%= @post.likes %></p>
-<p>Description: <%= @post.description %></p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FinalProject</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+        <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="card mb-3" style="max-width: 750px;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <%= image_tag(@post.image.url(:thumb), class: "card-img")%>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+          <div class="border-bottom border-secondary">
+            <h5 class="card-title"><%= link_to @post.user.username, user_path(@post.user) %></h5>
+          </div>
+          <div class="comment-description">
+            <p>Description: <%= @post.description %></p>
+            <div class="border-bottom border-secondary comments">
+            <ul>
+              <% if @post.comments.blank? %>
+              <li>
+                <p class="card-text">Thers are no comments yet.</p>
+              </li>
+              <% else %>
+                  <% @post.comments.each do |comment| %>
+                    <li>
+                      <strong><p class="card-text"><%= link_to comment.user.username, user_path(comment.user) %></p></strong>  <p><%= comment.content %></p>
+                    </li>
+                  <% end %>
+              <% end %>
+            </ul>
+            </div>
+          </div>
+          <div>
+            <%= button_to 'Like', like_post_path(@post), method: :patch, class: "likes" %>
+            <p class="likes">Likes: <%= @post.likes %></p>
+          </div>
+          <div class="border-bottom border-secondary">
+            <%= form_for [@post, Comment.new] do |f| %>
+              <%= f.label :user_id %>
+              <%= f.collection_select :user_id, User.all, :id, :username %>
+
+              <%= f.text_area :content, placeholder: "Make a comment" %>
+
+              <%= f.submit 'Comment' %>
+            <% end %>
+          </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= yield %>
+  </body>
+</html>
+
+
+
 <p>Posted: <%= @post.created_at %></p>
 
-<%= button_to 'Like', like_post_path(@post), method: :patch %>
-
-<h3>Comments:</h3>
-<% if @post.comments.blank? %>
-  <p>Thers is no comment yet.</p>
-<% else %>
-  <ul>
-    <% @post.comments.each do |comment| %>
-        <strong><p>@<%= link_to comment.user.username, user_path(comment.user) %></p></strong>  <p><%= comment.content %></p>
-    <% end %>
-  </ul>
-<% end %>
-
-<h3>New Comment:</h3>
-<%= form_for [@post, Comment.new] do |f| %>
-  <%= f.label :user_id %>
-  <%= f.collection_select :user_id, User.all, :id, :username %>
-
-  <%= f.label :content %>
-  <%= f.text_area :content %>
-
-  <%= f.submit 'Comment' %>
-<% end %>
 
 <p><%= link_to 'Edit', edit_post_path(@post) %></p>
 <p><%= link_to 'Delete', post_path(@post), method: :delete %></p>

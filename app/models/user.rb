@@ -11,4 +11,12 @@ class User < ApplicationRecord
       nil
     end
   end
+
+  def likes
+    self.posts.map {|post| post.likes}
+  end
+
+  def num_likes
+    self.likes.inject(0){|sum, num| sum + num}
+  end
 end
