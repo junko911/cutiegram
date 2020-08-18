@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     before_action :find_user, except: [:index, :new, :create]
+    
     def index
         @users = User.search(params[:query])
         render :index
@@ -16,6 +17,7 @@ class UsersController < ApplicationController
     def create
         @user = User.create(user_params)
         if @user.valid?
+            session[:user_id] = @user.id
             redirect_to user_path(@user)
         else
             render :new
