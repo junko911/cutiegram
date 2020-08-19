@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   end
   
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(post_params(:description, :image))
     @post.user = @current_user
 
     if @post.save!
@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update(post_params)
+    if @post.update(post_params(:description))
       redirect_to @post
     else
       render :edit
@@ -47,8 +47,8 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-  def post_params
-    params.require(:post).permit(:description, :image)
+  def post_params(*args)
+    params.require(:post).permit(*args)
   end
 
 end

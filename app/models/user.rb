@@ -1,7 +1,14 @@
 class User < ApplicationRecord
-  has_many :posts
+  has_many :posts, :dependent => :destroy
   validates :username, presence: true
   validates :username, uniqueness: true
+  has_attached_file :image,
+                    styles: {
+                            thumb: ["x300", :jpeg],
+                            original: [:jpeg]
+                        }
+  validates_attachment :image,
+                     content_type: { content_type: /\Aimage\/.*\z/ }
 
   has_secure_password
 

@@ -1,10 +1,15 @@
-<!--<%= button_to "Delete Account", @user, method: :delete %>-->
-    <div class="border-bottom border-secondary mx-auto mt-4 modal-dialog-centered justify-content-center" style="width: 25%; height: 75px">
-      <div class="float-left ml-2">
-        <h2 class="card-title"> <%= @user.username %> </h2>
+    <div class="border-bottom border-secondary mx-auto modal-dialog-centered profile-header" style="width: 40%">
+      <div class="profile-pic">
+        <%= image_tag(@user.image.url) if @user.image.exists? %>
+        <h4><%= @user.location if @user.location%></h4>
       </div>
-      <div class="float-right ml-5">
-        <h4 class="card-title"> <%= @user.num_likes %><%= " like".pluralize(@user.num_likes) %> total </h4>
+      <div class="profile-name">
+        <div class="float-left ml-2">
+          <h2 class="card-title"> <%= @user.username %> </h2>
+        </div>
+        <div class="float-right ml-5">
+          <h4 class="card-title mt-2"> <%= @user.num_likes %><%= " like".pluralize(@user.num_likes) %> total </h4>
+        </div>
       </div>
     </div>
     <div class="container mt-5">
