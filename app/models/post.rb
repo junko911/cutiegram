@@ -17,7 +17,7 @@ class Post < ApplicationRecord
     # IMAGE_FILE = image_url
     # byebug
 
-    api_key = 'AIzaSyCsDEMOxArkb1NhkJ3obOGTlu7fnTcZ578'
+    api_key = ENV.fetch("GOOGLE_API_KEY")
     api_url = "https://vision.googleapis.com/v1/images:annotate?key=#{api_key}"
     # API_KEY = 'AIzaSyCsDEMOxArkb1NhkJ3obOGTlu7fnTcZ578'
     # API_URL = "https://vision.googleapis.com/v1/images:annotate?key=#{API_KEY}"
