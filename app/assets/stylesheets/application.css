@@ -22,6 +22,10 @@
    border: 1px solid red;
  }
 
+body {
+  background-color: whitesmoke;
+}
+
  #myVideo {
   position: fixed;
   z-index: -1;

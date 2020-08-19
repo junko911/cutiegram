@@ -1,7 +1,7 @@
 <% @posts.each do |post| %>
     <% if post.image.exists? %>
         <div class="card rounded-left mx-auto mt-4" style="width: 18rem;">
-            <div class="card" style="width: 18rem;">
+            <div class="card mt-0" style="width: 18rem;">
                 <div class="card-body modal-dialog-centered" style="height: 1rem;">
                     <strong><p class="card-text"><%=link_to post.user.username, user_path(post.user)%></p></strong>
                 </div>

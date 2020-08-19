@@ -1,21 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>FinalProject</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-        <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
     <div class="card mb-3 mx-auto border-dark" style="max-width: 50vw">
       <div class="row no-gutters">
         <div class="col-md-6 flex-this">
@@ -45,7 +28,7 @@
             </div>
 
             <div class="mt-2">
-              <%= button_to 'Like', like_post_path(@post), method: :patch, class: "likes" %>
+              <%= button_to 'Like Post', like_post_path(@post), method: :patch, class: "likes btn btn-primary" %>
               <p class="likes ml-3">Liked by: <%= @post.likes %><%=" person".pluralize(@post.likes)%> </p>
             </div>
             <div class="comment-form">
@@ -53,7 +36,7 @@
             
                 <%= f.text_area :content, placeholder: "Make a comment" %>
 
-                <%= f.submit 'Comment' %>
+                <%= f.submit 'Comment', class: "btn btn-primary" %>
               <% end %>
             </div>
           </div>
@@ -63,15 +46,7 @@
 
     <% if @post.user == @current_user %>
       <div class="footer">
-        <%= button_to 'Edit', edit_post_path(@post), method: :get, class: "bottom-buttons" %>
-        <%= button_to 'Delete', post_path(@post), method: :delete, class: "bottom-buttons" %>
+        <%= button_to 'Edit Post', edit_post_path(@post), method: :get, class: "bottom-buttons btn btn-primary" %>
+        <%= button_to 'Delete Post', post_path(@post), method: :delete, class: "bottom-buttons btn btn-danger" %>
       </div>
     <% end %>
-    <%= yield %>
-
-  </body>
-</html>
-
-<!--
-
--->
