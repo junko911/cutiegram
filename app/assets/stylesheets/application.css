@@ -56,6 +56,10 @@
   max-width: 330px;
   padding: 15px;
   margin: auto;
+  position: absolute;
+  top: 30%;
+  left: 0;
+  right: 0;
 }
 
 .form-signin h1 {
