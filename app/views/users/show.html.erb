@@ -1,25 +1,4 @@
-<!--<h1> <%= @user.username %>'s Posts </h1>
-
-<%= button_to "Delete Account", @user, method: :delete %>-->
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>FinalProject</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-  <body>
+<!--<%= button_to "Delete Account", @user, method: :delete %>-->
     <div class="border-bottom border-secondary mx-auto mt-4 modal-dialog-centered justify-content-center" style="width: 25%; height: 75px">
       <div class="float-left ml-2">
         <h2 class="card-title"> <%= @user.username %> </h2>
@@ -31,12 +10,11 @@
     <div class="container mt-5">
       <div class="row">
         <% @user.posts.each do |post| %>
+          <%if post.image.exists?%>
             <div class="col-sm-4 mb-4">
               <%= link_to (image_tag(post.image.url, class: "card-img-top show")), post_path(post) %>
             </div>
+          <% end %>
         <% end %>
       </div>
     </div>
-    <%= yield %>
-  </body>
-</html>
