@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :post_tags
   resources :tags
   resources :posts
+  resources :searches
   
   resources :posts do
     resources :comments

@@ -1,16 +1,31 @@
 <%= render 'shared/errors', object: @user %>
 
 <%= form_for(@user) do |user_builder| %>
-    <div>
-        <%= user_builder.label :username %>
-        <%= user_builder.text_field :username %>
-
-        <%= user_builder.label :password %>
-        <%= user_builder.text_field :password %>
-
-        <%= user_builder.label :password_confirmation %>
-        <%= user_builder.text_field :password_confirmation %>
+    <div class="settings-form">
+        <div>
+            <%= user_builder.label "Username: " %>
+            <%= user_builder.text_field :username %>
+        </div><br>
+        <div>
+            <%= user_builder.label "Profile Picture: " %>
+            <%= user_builder.file_field :image %>
+        </div><br>
+        <div>
+            <%= user_builder.label "Location: " %>
+            <%= user_builder.text_field :location %>
+        </div><br>
+        <div>
+            <%= user_builder.label "Password: " %>
+            <%= user_builder.text_field :password %>
+        </div><br>
+        <div>
+            <%= user_builder.label "Confirm Password: " %>
+            <%= user_builder.text_field :password_confirmation %>
+        </div>
+        <%= user_builder.submit "Update Profile", class: "btn btn-primary btn-lg mt-5 btn-block" %>
     </div>
-
-    <%= user_builder.submit submit_text %>
 <% end %>
+
+<div class="settings-form">
+    <%= button_to "Delete Account", user_path(@user), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-lg mt-3 btn-block"%>
+</div>

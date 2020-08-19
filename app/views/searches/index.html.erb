@@ -6,4 +6,9 @@
         <p><%= link_to user.username, user_path(user) %> - <%= user.posts.count %><%= " post".pluralize(user.posts.count) %> </p>
     <% end %>
 <% end %>
+<% if @posts %>
+    <% @posts.each do |post| %>
+        <p><%= post %> </p>
+    <% end %>
+<% end %>
 </div>

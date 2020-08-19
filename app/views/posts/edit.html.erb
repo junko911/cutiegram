@@ -1,2 +1,16 @@
-<h1>Edit Post</h1>
-<%= render 'form' %>
+<h1 class="display-4 text-center mt-5">Edit Post</h1>
+<div class="new-post">
+    <%= render 'shared/errors', object: @post %>
+    <div>
+    <%= form_for @post do |f| %>
+    
+        <div class="inner-form mt-5">
+            <div class="form-inline">
+                <%= f.text_area :description, placeholder: "Description" %>
+            
+                <%= f.submit "Post", class: "btn btn-lg btn-primary display-4 post-description" %>
+            </div>
+        </div>
+    <% end %>
+    </div>
+</div>

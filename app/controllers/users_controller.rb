@@ -2,13 +2,12 @@ class UsersController < ApplicationController
     before_action :find_user, except: [:index, :new, :create]
     skip_before_action :authorized, only: [:new, :create]
 
-    def index
-        @users = User.search(params[:query])
-        render :index
-    end
+    # def index
+    #     @users = User.search(params[:query])
+    #     render :index
+    # end
 
     def show
-        @users = User.all
     end
 
     def new
@@ -16,7 +15,7 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.create(user_params)
+        @user = User.create(user_params(:username, :password, :password_confirmation, :query))
         if @user.valid?
             session[:user_id] = @user.id
             redirect_to posts_path
@@ -25,8 +24,12 @@ class UsersController < ApplicationController
         end
     end
 
+    def edit
+    end
+
     def update
-        @user.update(user_params)
+        @user.update(user_params(:username, :password, :password_confirmation, :image, :location, :query))
+        session[:user_id] = @user.id
         if @user.valid?
             redirect_to user_path(@user)
         else
@@ -41,8 +44,8 @@ class UsersController < ApplicationController
 
     private
 
-    def user_params
-        params.require(:user).permit(:username, :password, :password_confirmation, :query)
+    def user_params(*args)
+        params.require(:user).permit(*args)
     end
 
     def find_user

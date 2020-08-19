@@ -40,8 +40,11 @@
             <li class="nav-item">
               <a class="nav-link" href="/posts/new">New Post</a>
             </li>
+            <li class="nav-item">
+              <%= link_to "Settings", edit_user_path(@current_user), class: "nav-link"%>
+            </li>
           </ul>
-          <%= form_tag users_path, :method => 'get', :class => "form-inline my-2 my-lg-0" do %>
+          <%= form_tag searches_path, :method => 'get', :class => "form-inline my-2 my-lg-0" do %>
             <%= text_field_tag :query, params[:query], class: "form-control mr-sm-2", placeholder:"Search" %>
             <%= submit_tag "Search", class: "btn btn-outline-success my-2 my-sm-0" %>
           <% end %>
@@ -60,8 +63,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <div>
+  
       <%= yield %>
-    </div>
+   
   </body>
 </html>

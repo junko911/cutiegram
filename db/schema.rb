@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_18_151218) do
+ActiveRecord::Schema.define(version: 2020_08_19_173240) do
 
   create_table "comments", force: :cascade do |t|
     t.string "content"
@@ -40,6 +40,11 @@ ActiveRecord::Schema.define(version: 2020_08_18_151218) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "searches", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -48,6 +53,11 @@ ActiveRecord::Schema.define(version: 2020_08_18_151218) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
+    t.string "location"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
