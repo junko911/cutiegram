@@ -1,6 +1,4 @@
-<video autoplay muted loop id="myVideo">
-  <source src="/cat.mp4" type="video/mp4">
-</video>
+<%= render 'shared/background' %>
 
 <div class="jumbotron signup">
     <h1 class="display-3">Welcome to CutieGram!</h1>
@@ -12,7 +10,10 @@
         <%= user_builder.text_field :username %>
 
         <%= user_builder.label :password %>
-        <%= user_builder.text_field :password %>
+        <%= user_builder.password_field :password %>
+
+        <%= user_builder.label :password_confirmation %>
+        <%= user_builder.password_field :password_confirmation %>
       </div>
       <%= user_builder.submit 'Sign Up', class: "btn btn-primary btn-sm" %>
     <% end %>

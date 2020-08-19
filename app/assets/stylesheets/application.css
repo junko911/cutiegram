@@ -14,9 +14,13 @@
  *= require_self
  */
 
- /* .field_with_errors input {
+ .field_with_errors {
+   display: inline-block;
+ }
+
+ .field_with_errors input {
    border: 1px solid red;
- } */
+ }
 
 body {
   background-color: whitesmoke;
@@ -24,10 +28,13 @@ body {
 
  #myVideo {
   position: fixed;
-  right: 0;
   z-index: -1;
-  min-width: 100%;
-  min-height: 100%;
+  height: auto;
+  width: 100%;
+  top:0;  
+  left:0;  
+  right:0;  
+  bottom:0;
 }
 
 .signup {
@@ -53,7 +60,17 @@ body {
   max-width: 330px;
   padding: 15px;
   margin: auto;
+  position: absolute;
+  top: 30%;
+  left: 0;
+  right: 0;
 }
+
+.form-signin h1 {
+  color:  #f1f1f1;
+  text-shadow: 2px 2px #6c757d;
+}
+
 .form-signin .checkbox {
   font-weight: 400;
 }
@@ -78,3 +95,6 @@ body {
   border-top-right-radius: 0;
 }
 
+a.nav-link {
+  color: rgba(255,255,255,.5);
+}
