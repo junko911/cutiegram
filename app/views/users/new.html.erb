@@ -3,9 +3,8 @@
 </video>
 
 <div class="jumbotron signup">
-  <div class="container">
     <h1 class="display-3">Welcome to CutieGram!</h1>
-    <p>You can upload your pictures and share it with your friends.</p>
+    <p>Upload your pictures and share them with your friends.</p>
     <%= render 'shared/errors', object: @user %>
     <%= form_for(@user) do |user_builder| %>
       <div style="display: inline; margin: 10px">
@@ -17,5 +16,4 @@
       </div>
       <%= user_builder.submit 'Sign Up', class: "btn btn-primary btn-sm" %>
     <% end %>
-  </div>
 </div>
