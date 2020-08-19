@@ -1,15 +1,54 @@
-div .likes{
-    display: inline-block
+body {
+    background-color: whitesmoke;
 }
 
+.card {
+    margin-top: 5%;
+}
+
+.show-img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.flex-this {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-head {
+    display: inline-block;
+}
+
+.likes {
+    float: left;
+}
 .comments p {
     display: inline-block
 }
 
-.comments-description {
+.comments {
     overflow-y: hidden;
+    overflow: scroll;
+    max-height: 250px;
+}
+
+.comment-form {
+    display: inline-block;
+    width: 100%;
 }
 
 ul {
     list-style-type: none;
+}
+
+.footer {
+    padding: 30px;
+}
+
+.bottom-buttons {
+    float: right;
+    display: inline-block;
+    margin: 15px;
 }
