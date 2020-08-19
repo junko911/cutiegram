@@ -8,11 +8,14 @@
     <%= render 'shared/errors', object: @user %>
     <%= form_for(@user) do |user_builder| %>
       <div style="display: inline; margin: 10px">
-      <%= user_builder.label :username %>
-      <%= user_builder.text_field :username %>
+        <%= user_builder.label :username %>
+        <%= user_builder.text_field :username %>
 
-      <%= user_builder.label :password %>
-      <%= user_builder.text_field :password %>
+        <%= user_builder.label :password %>
+        <%= user_builder.password_field :password %>
+
+        <%= user_builder.label :password_confirmation %>
+        <%= user_builder.password_field :password_confirmation %>
       </div>
       <%= user_builder.submit 'Sign Up', class: "btn btn-primary btn-sm" %>
     <% end %>

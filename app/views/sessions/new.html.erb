@@ -3,8 +3,7 @@
 </video>
 
 <div class="login-page">
-  <form class="form-signin">
-  <img class="mb-4" src="../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+  <div class="form-signin">
   <h1 class="h3 mb-3 font-weight-normal">Please Login</h1>
   <%= form_for :session, url: login_path do |f| %>
     <%= flash[:error] if flash[:error] %>
@@ -14,5 +13,5 @@
     <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
     <%= f.submit 'Login', class: "btn btn-lg btn-primary btn-block" %>
   <% end %>
-  </form>
+  </div>
 </div>
