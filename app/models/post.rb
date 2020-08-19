@@ -14,13 +14,8 @@ class Post < ApplicationRecord
                      content_type: { content_type: /\Aimage\/.*\z/ }
 
   def get_tags(image)
-    # IMAGE_FILE = image_url
-    # byebug
-
     api_key = ENV.fetch("GOOGLE_API_KEY")
     api_url = "https://vision.googleapis.com/v1/images:annotate?key=#{api_key}"
-    # API_KEY = 'AIzaSyCsDEMOxArkb1NhkJ3obOGTlu7fnTcZ578'
-    # API_URL = "https://vision.googleapis.com/v1/images:annotate?key=#{API_KEY}"
 
     # Encode images to base64
     base64_image = Base64.strict_encode64(File.new(image, 'rb').read)
