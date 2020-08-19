@@ -16,58 +16,62 @@
   </head>
 
   <body>
-    <div class="card mb-3" style="max-width: 750px;">
+    <div class="card mb-3 mx-auto border-dark" style="max-width: 50vw">
       <div class="row no-gutters">
-        <div class="col-md-4">
-          <%= image_tag(@post.image.url(:thumb), class: "card-img")%>
+        <div class="col-md-6 flex-this">
+          <%= image_tag(@post.image.url(:thumb), class: "card-img show-img")%>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-6 flex-this">
           <div class="card-body">
-          <div class="border-bottom border-secondary">
-            <h5 class="card-title"><%= link_to @post.user.username, user_path(@post.user) %></h5>
-          </div>
-          <div class="comment-description">
-            <p>Description: <%= @post.description %></p>
-            <div class="border-bottom border-secondary comments">
-            <ul>
-              <% if @post.comments.blank? %>
-              <li>
-                <p class="card-text">Thers are no comments yet.</p>
-              </li>
-              <% else %>
-                  <% @post.comments.each do |comment| %>
-                    <li>
-                      <strong><p class="card-text"><%= link_to comment.user.username, user_path(comment.user) %></p></strong>  <p><%= comment.content %></p>
-                    </li>
-                  <% end %>
-              <% end %>
-            </ul>
+            <div class="border-bottom border-secondary">
+              <h4 class="card-title card-head"><%= link_to @post.user.username, user_path(@post.user) %></h4><p class="ml-4 card-head">Posted on <%= @post.created_at.strftime("%B %d, %Y at %I:%M %p") %></p>
+              <p><%= @post.description %></p>
             </div>
-          </div>
-          <div>
-            <%= button_to 'Like', like_post_path(@post), method: :patch, class: "likes" %>
-            <p class="likes">Likes: <%= @post.likes %></p>
-          </div>
-          <div class="border-bottom border-secondary">
-            <%= form_for [@post, Comment.new] do |f| %>
-              <%= f.text_area :content, placeholder: "Make a comment" %>
+            <div class="border-bottom border-secondary comments" >
+              <h5>Comments:</h5>
+                <ul>
+                  <% if @post.comments.blank? %>
+                  <li>
+                    <p class="card-text">Thers are no comments yet.</p>
+                  </li>
+                  <% else %>
+                      <% @post.comments.each do |comment| %>
+                        <li>
+                          <strong><p class="card-text"><%= link_to comment.user.username, user_path(comment.user) %></p></strong>  <p><%= comment.content %></p>
+                        </li>
+                      <% end %>
+                  <% end %>
+                </ul>
+            </div>
 
-              <%= f.submit 'Comment' %>
-            <% end %>
-          </div>
+            <div class="mt-2">
+              <%= button_to 'Like', like_post_path(@post), method: :patch, class: "likes" %>
+              <p class="likes ml-3">Liked by: <%= @post.likes %><%=" person".pluralize(@post.likes)%> </p>
+            </div>
+            <div class="comment-form">
+              <%= form_for [@post, Comment.new] do |f| %>
             
+                <%= f.text_area :content, placeholder: "Make a comment" %>
+
+                <%= f.submit 'Comment' %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+    <% if @post.user == @current_user %>
+      <div class="footer">
+        <%= button_to 'Edit', edit_post_path(@post), method: :get, class: "bottom-buttons" %>
+        <%= button_to 'Delete', post_path(@post), method: :delete, class: "bottom-buttons" %>
+      </div>
+    <% end %>
+    <%= yield %>
+
   </body>
 </html>
 
+<!--
 
-
-<p>Posted: <%= @post.created_at %></p>
-
-
-<p><%= link_to 'Edit', edit_post_path(@post) %></p>
-<p><%= link_to 'Delete', post_path(@post), method: :delete %></p>
-<p><%= link_to 'Go back to User page', user_path(@post.user) %></p>
+-->
