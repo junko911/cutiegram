@@ -13,14 +13,17 @@ class Post < ApplicationRecord
   validates_attachment :image,
                      content_type: { content_type: /\Aimage\/.*\z/ }
 
-  def get_tag(image)
-    IMAGE_FILE = image
+  def get_tags(image)
+    # IMAGE_FILE = image_url
+    # byebug
 
-    API_KEY = 'AIzaSyCsDEMOxArkb1NhkJ3obOGTlu7fnTcZ578'
-    API_URL = "https://vision.googleapis.com/v1/images:annotate?key=#{API_KEY}"
+    api_key = 'AIzaSyCsDEMOxArkb1NhkJ3obOGTlu7fnTcZ578'
+    api_url = "https://vision.googleapis.com/v1/images:annotate?key=#{api_key}"
+    # API_KEY = 'AIzaSyCsDEMOxArkb1NhkJ3obOGTlu7fnTcZ578'
+    # API_URL = "https://vision.googleapis.com/v1/images:annotate?key=#{API_KEY}"
 
     # Encode images to base64
-    base64_image = Base64.strict_encode64(File.new(IMAGE_FILE, 'rb').read)
+    base64_image = Base64.strict_encode64(File.new(image, 'rb').read)
 
     # Build JSON format
     body = {
@@ -38,14 +41,16 @@ class Post < ApplicationRecord
     }.to_json
 
     # Send request to Cloud Vision API
-    uri = URI.parse(API_URL)
+    uri = URI.parse(api_url)
     https = Net::HTTP.new(uri.host, uri.port)
     https.use_ssl = true
     request = Net::HTTP::Post.new(uri.request_uri)
     request["Content-Type"] = "application/json"
     response = https.request(request, body)
-
-    # print response in console
-    puts response.body
+    results = JSON.parse(response.body)
+    results["responses"][0]["labelAnnotations"].each { |result| 
+      tag = Tag.find_or_create_by(name: result["description"])
+      PostTag.create(post_id: self.id, tag_id: tag.id)
+    }
   end
 end
