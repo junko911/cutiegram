@@ -1,7 +1,11 @@
     <div class="border-bottom border-secondary mx-auto modal-dialog-centered profile-header" style="width: 40%">
       <div class="profile-pic">
-        <%= image_tag(@user.image.url) if @user.image.exists? %>
-        <h4><%= @user.location if @user.location%></h4>
+        <% if @user.image.exists?%>
+          <%= image_tag(@user.image.url) %>
+        <% end %>
+        <% if @user.location %>
+          <h4><i class='fas fa-map-marker-alt' style='font-size:21px'></i><%= @user.location %></h4>
+        <% end %>
       </div>
       <div class="profile-name">
         <div class="float-left ml-2">
@@ -14,7 +18,7 @@
     </div>
     <div class="container mt-5">
       <div class="row">
-        <% @user.posts.each do |post| %>
+        <% @user.posts.order('created_at DESC').each do |post| %>
           <%if post.image.exists?%>
             <div class="col-sm-4 mb-4">
               <%= link_to (image_tag(post.image.url, class: "card-img-top show")), post_path(post) %>

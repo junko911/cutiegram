@@ -5,6 +5,7 @@
         <div class="card rounded-left mx-auto mt-4" style="width: 18rem;">
             <div class="card mt-0" style="width: 18rem;">
                 <div class="card-body modal-dialog-centered" style="height: 1rem;">
+                    <%= image_tag(post.user.image.url, class: "show-pic index-card") %>
                     <strong><p class="card-text"><%=link_to post.user.username, user_path(post.user)%></p></strong>
                 </div>
                 <%= link_to (image_tag(post.image.url, class: "card-img-top")), post_path(post)%>
