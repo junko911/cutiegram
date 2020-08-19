@@ -7,6 +7,33 @@
     max-height: 100%;
 }
 
+.show-pic {
+    height: 80px;
+    width: 80px;
+    border-radius: 75%;
+    object-fit: cover;
+}
+
+.index-card {
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+}
+
+p.card-head {
+    color: gray
+}
+
+.card-top {
+    display: flex;
+    flex-direction: column;
+}
+
+.name-description {
+    display: flex;
+    flex-direction: row;
+}
+
 .flex-this {
     display: flex;
     justify-content: center;
@@ -31,7 +58,9 @@
 }
 
 .comment-form {
-    display: inline-block;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     width: 100%;
 }
 
@@ -46,7 +75,6 @@ ul {
 }
 
 .bottom-buttons {
-    
     display: inline-block;
     margin: 15px;
 }
@@ -83,4 +111,14 @@ input#post_image {
 
 a {
     color: black;
+}
+
+.tags p {
+    margin-top: 10px;
+    font-size: 15px;
+    display: inline-block;
+}
+
+.inline {
+    display: inline-block;
 }

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'posts#index'
   resources :post_tags
-  resources :tags
+  resources :tags, only: [:show]
   resources :posts
   resources :searches
   
