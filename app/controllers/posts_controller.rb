@@ -5,17 +5,15 @@ class PostsController < ApplicationController
     @posts = Post.order('created_at DESC')
   end
 
-  def show
-  end
-
   def new
     @post = Post.new
   end
   
   def create
-    @post = Post.create(post_params)
+    @post = Post.new(post_params)
+    @post.user = @current_user
 
-    if @post.valid?
+    if @post.save
       redirect_to @post
     else
       render :new
@@ -33,7 +31,7 @@ class PostsController < ApplicationController
   def destroy
     user = @post.user
     @post.destroy
-    redirect_to user_path(user) #redirect to user show page
+    redirect_to user_path(user)
   end
 
   def like
@@ -49,7 +47,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:description, :user_id, :image)
+    params.require(:post).permit(:description, :image)
   end
 
 end

@@ -43,15 +43,14 @@
                   <% end %>
                 </ul>
             </div>
+
             <div class="mt-2">
               <%= button_to 'Like', like_post_path(@post), method: :patch, class: "likes" %>
               <p class="likes ml-3">Liked by: <%= @post.likes %><%=" person".pluralize(@post.likes)%> </p>
             </div>
             <div class="comment-form">
               <%= form_for [@post, Comment.new] do |f| %>
-                <%= f.label :user_id %>
-                <%= f.collection_select :user_id, User.all, :id, :username %>
-
+            
                 <%= f.text_area :content, placeholder: "Make a comment" %>
 
                 <%= f.submit 'Comment' %>
@@ -61,6 +60,7 @@
         </div>
       </div>
     </div>
+
     <% if @post.user == @current_user %>
       <div class="footer">
         <%= button_to 'Edit', edit_post_path(@post), method: :get, class: "bottom-buttons" %>
@@ -68,6 +68,7 @@
       </div>
     <% end %>
     <%= yield %>
+
   </body>
 </html>
 

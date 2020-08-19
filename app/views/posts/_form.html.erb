@@ -19,8 +19,6 @@
 
     <%= form_for @post do |f| %>
       <div class="form-group">
-        <%= f.label :user_id %>
-        <%= f.collection_select :user_id, User.all, :id, :username %>
         <br><br>
         <%= f.label "Please choose an image to upload: " %>
         <%= f.file_field :image %>
@@ -34,6 +32,3 @@
       <%= yield %>
   </body>
 </html>
-
-
-
