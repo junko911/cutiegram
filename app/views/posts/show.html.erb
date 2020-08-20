@@ -34,8 +34,12 @@
                 </ul>
             </div>
             <div class="likes mt-3">
-              <%= button_to "💚", like_post_path(@post), method: :patch, class: "btn emoji-btn" %>
-              <p class="ml-1 mb-0">Liked by: <%= @post.likes %><%=" person".pluralize(@post.likes)%> </p>
+              <% if @post.liked?(@current_user) %>
+                <%= button_to "♡", like_path(@post), method: :delete, class: "btn emoji-btn" %>
+              <% else %>
+                <%= button_to "💚", like_path(@post), method: :put, class: "btn emoji-btn" %>
+              <% end %>
+              <p class="ml-1 mb-0">Liked by: <%= @post.likes.count %><%=" person".pluralize(@post.likes.count)%> </p>
             </div>
             <div class="comment-form">
               <%= form_for [@post, Comment.new] do |f| %>
