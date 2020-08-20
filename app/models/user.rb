@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :posts, :dependent => :destroy
   has_many :comments, :dependent => :destroy
-  validates :username, presence: true
+  validates :username, presence: { message: 'You need username!'}
   validates :username, uniqueness: true
   has_attached_file :image,
                     styles: {

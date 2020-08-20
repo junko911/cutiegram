@@ -1,11 +1,11 @@
-<%= render 'shared/errors', object: @user %>
-
 <%= form_for(@user) do |user_builder| %>
     <div class="settings-form">
-        <div>
-            <%= user_builder.label "Username: " %>
-            <%= user_builder.text_field :username %>
-        </div><br>
+        <%= user_builder.label "Username: " %>
+        <%= user_builder.text_field :username %>
+            <div class="invalid-feedback">
+            <%= @user.errors[:username].join if @user.errors[:username].any? %>
+            </div>
+        <br>
         <div>
             <%= user_builder.label "Profile Picture: " %>
             <%= user_builder.file_field :image %>
@@ -21,6 +21,9 @@
         <div>
             <%= user_builder.label "Confirm Password: " %>
             <%= user_builder.text_field :password_confirmation %>
+            <div class="invalid-feedback">
+            <%= @user.errors[:password_confirmation].join if @user.errors[:password_confirmation].any? %>
+            </div>
         </div>
         <%= user_builder.submit "Update Profile", class: "btn btn-primary btn-lg mt-5 btn-block" %>
     </div>
