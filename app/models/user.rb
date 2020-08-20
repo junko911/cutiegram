@@ -43,4 +43,8 @@ class User < ApplicationRecord
   def following_posts
     followers.map(&:posts).flatten
   end
+
+  def following?(user)
+    followers.include? user
+  end
 end

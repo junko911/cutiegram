@@ -44,7 +44,13 @@ class UsersController < ApplicationController
 
     def follow
         Relationship.create(follower: @user, followed: @current_user)
-        redirect_to posts_path
+        redirect_to @user
+    end
+
+    def unfollow
+        @relationship = Relationship.find_by(follower: @user, followed: @current_user)
+        @relationship.destroy
+        redirect_to @current_user
     end
 
     private
