@@ -14,13 +14,6 @@
  *= require_self
  */
 
- .field_with_errors {
-   display: inline-block;
- }
-
- .field_with_errors input {
-   border: 1px solid red;
- }
 
 body {
   background-color: whitesmoke;
@@ -93,4 +86,43 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.navbar-expand-lg .navbar-nav a.nav-link.logout {
+  padding-left: 20px;
+}
+
+.alert-danger ul {
+  list-style: circle;
+}
+
+.container.new-post {
+  margin-right: 50px;
+  margin-left: 50px;
+}
+
+#new-post-form {
+  margin-top: 50px;
+}
+
+.invalid-feedback {
+  display: block;
+  color: red;
+  margin-top: 0;
+}
+
+.was-validated textarea.form-control:valid, textarea.form-control.is-valid {
+  background: none;
+}
+
+.form-control.is-valid:focus .was-validated .form-control.is-valid {
+  box-shadow: 0 0 0 0.2rem rgba(40, 159, 167, 0.25);
+}
+
+.field_with_errors textarea#post_description {
+  border-color: red;
+}
+
+.field_with_errors textarea#post_description:focus {
+  box-shadow: 0 0 0 0.2rem rgba(167, 40, 40, 0.25);
 }
