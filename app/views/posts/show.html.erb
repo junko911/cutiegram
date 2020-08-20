@@ -33,7 +33,7 @@
             </div>
 
             <div class="likes mt-3">
-              <%= button_to "😉", like_post_path(@post), method: :patch, class: "btn emoji-btn" %>
+              <%= button_to "💚", like_post_path(@post), method: :patch, class: "btn emoji-btn" %>
               <p class="ml-1 mb-0">Liked by: <%= @post.likes %><%=" person".pluralize(@post.likes)%> </p>
             </div>
             <div class="comment-form">
