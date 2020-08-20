@@ -2,8 +2,9 @@ class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy, :like]
 
   def index
-    @posts = Post.order('created_at DESC')
     @user = @current_user
+    @posts = @user.following_posts.sort_by(&:created_at).reverse
+    # @posts = Post.order('created_at DESC')
   end
 
   def new

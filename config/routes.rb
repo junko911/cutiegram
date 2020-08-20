@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   end
 
   resources :users
+  resources :users do
+    member do
+      post 'follow'
+    end
+  end
 
   delete '/sessions/logout', to: 'sessions#logout', as: 'logout'
   get '/sessions/new', to: 'sessions#new', as: 'new_login'
