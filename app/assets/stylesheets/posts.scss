@@ -8,13 +8,19 @@
 }
 
 .show-pic {
-    height: 80px;
-    width: 80px;
-    border-radius: 75%;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid #343a40;
     object-fit: cover;
 }
 
 .post-index-scroll {
+    display: flex;
+    flex-direction: column;
+    display: inline-block;
+    margin-left: 25vw;
+
     overflow-y: hidden;
     overflow: scroll;
     padding-right: 15vw;
@@ -147,6 +153,7 @@ a {
 }
 
 .top-five h3 {
+    font-family: 'Oleo Script', cursive;
     font-size: 30px;
 }
 
@@ -156,4 +163,24 @@ a {
 
 .emoji-btn {
     font-size: 25px;
+}
+
+.users-scroll {
+    display: flex;
+    flex-direction: row;
+
+    overflow-x: hidden;
+    overflow: scroll;
+    
+    border: 1px solid;
+    border-radius: 5px;
+    border-color: #cccccc;
+
+    background-color: white;
+    padding: 3px;
+
+    img.show-pic {
+        margin: 10px;
+        border-radius: 50%;
+    }
 }

@@ -42,6 +42,11 @@ class UsersController < ApplicationController
         redirect_to new_user_path
     end
 
+    def follow
+        Relationship.create(follower: @user, followed: @current_user)
+        redirect_to posts_path
+    end
+
     private
 
     def user_params(*args)
