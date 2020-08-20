@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :likes
   
   validates :username, presence: { message: 'You need a username! How else will we know what to call you?'}
-  validates :username, uniqueness: true
+  validates :username, uniqueness: { message: 'Shoot! Someone is already using this username...'}
   has_attached_file :image,
                     styles: {
                             thumb: ["x300", :jpeg],
