@@ -4,15 +4,17 @@
           <%= image_tag(@user.image.url) %>
         <% end %>
         <% if @user.location %>
-          <h4><i class='fas fa-map-marker-alt' style='font-size:21px'></i><%= @user.location %></h4>
+          <h4><i class='fas fa-map-marker-alt mr-2' style='font-size:21px'></i><%= link_to @user.location, "http://www.google.com/maps/place/#{@user.location}", target: :_blank %></h4>
         <% end %>
       </div>
       <div class="profile-name">
-        <div class="float-left ml-2">
-          <h2 class="card-title"> <%= @user.username %> </h2>
-        </div>
-        <div class="float-right ml-5">
-          <h4 class="card-title mt-2"> <%= @user.num_likes %><%= " like".pluralize(@user.num_likes) %> total </h4>
+        <div>
+          <div class="float-left ml-2">
+            <h2 class="card-title"> <%= @user.username %> </h2>
+          </div>
+          <div class="float-right ml-5">
+            <h4 class="card-title mt-2"> <%= @user.num_likes %><%= " like".pluralize(@user.num_likes) %> total </h4>
+          </div>
         </div>
       </div>
     </div>

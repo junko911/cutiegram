@@ -27,4 +27,8 @@ class User < ApplicationRecord
   def num_likes
     self.likes.inject(0){|sum, num| sum + num}
   end
+
+  def top_five
+    User.all.sort_by {|user| user.num_likes}
+  end
 end

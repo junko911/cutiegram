@@ -1,18 +1,53 @@
 <h1 class="display-2 text-center mt-5">Check out all of these Cuties!</h1>
 
-<% @posts.each do |post| %>
-    <% if post.image.exists? %>
-        <div class="card rounded-left mx-auto mt-4" style="width: 18rem;">
-            <div class="card mt-0" style="width: 18rem;">
-                <div class="card-body modal-dialog-centered" style="height: 1rem;">
-                    <%= image_tag(post.user.image.url, class: "show-pic index-card") %>
-                    <strong><p class="card-text"><%=link_to post.user.username, user_path(post.user)%></p></strong>
+<div class="d-flex flex-row justify-content-center">
+    <div class="post-index-scroll" style="max-height: 100vh;">
+        <% @posts.each do |post| %>
+            <% if post.image.exists? %>
+                <div class="card rounded-left mx-auto mt-4" style="width: 20rem;">
+                    <div class="card mt-0" style="width: 20rem;">
+                        <div class="card-body modal-dialog-centered" style="height: 1rem;">
+                            <%= image_tag(post.user.image.url, class: "show-pic index-card") %>
+                            <strong><p class="card-text"><%=link_to post.user.username, user_path(post.user)%></p></strong>
+                        </div>
+                        <%= link_to (image_tag(post.image.url, class: "card-img-top")), post_path(post)%>
+                        <div class="card-body text-center">
+                            <p class="card-text"> <%=post.description%> </p>
+                        </div>
+                    </div>
                 </div>
-                <%= link_to (image_tag(post.image.url, class: "card-img-top")), post_path(post)%>
-                <div class="card-body text-center">
-                    <p class="card-text"> <%=post.description%> </p>
+            <% end %>
+        <% end %>
+    </div>
+    <div class="right">
+        <div class="modal-dialog-centered profile-header index ml-5">
+            <div class="profile-pic">
+                <% if @user.image.exists?%>
+                    <%= link_to image_tag(@user.image.url), user_path(@user) %>
+                <% end %>
+                <% if @user.location %>
+                    <h4><i class='fas fa-map-marker-alt mr-1' style='font-size:17px'></i><%= link_to @user.location, "http://www.google.com/maps/place/#{@user.location}", style: "font-size: 17px", target: :_blank %></h4>
+                <% end %>
+            </div>
+            <div class="profile-name">
+                <div>
+                    <div class="float-left ml-2">
+                        <h3 class="card-title"> <%= link_to @user.username, user_path(@user)%> </h3>
+                    </div>
+                    <div class="float-right ml-5">
+                        <h5 class="card-title mt-1"> <%= @user.num_likes %><%= " like".pluralize(@user.num_likes) %> total </h5>
+                    </div>
+                </div>
+                <div class="top-five">
+                    <h3 class="border-bottom border-primary mt-3 mb-4">Here are some top Cuties!</h3>
+                    <% @user.top_five.each do |user| %>
+                        <div class="mt-1">
+                            <p><strong><%= link_to user.username, user_path(user) %></strong> - <%= user.posts.count %> <%= " post".pluralize(user.posts.count) %></p>
+                        </div>
+                    <% end %>
                 </div>
             </div>
         </div>
-    <% end %>
-<% end %>
+        
+    </div>
+</div>
