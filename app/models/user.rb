@@ -2,7 +2,8 @@ class User < ApplicationRecord
   has_many :posts, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :likes
-  validates :username, presence: true
+  
+  validates :username, presence: { message: 'You need a username! How else will we know what to call you?'}
   validates :username, uniqueness: true
   has_attached_file :image,
                     styles: {

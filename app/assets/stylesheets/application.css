@@ -92,8 +92,8 @@ body::-webkit-scrollbar {
   border-top-right-radius: 0;
 }
 
-.navbar-expand-lg .navbar-nav a.nav-link.logout {
-  padding-left: 20px;
+.navbar input {
+  margin-right: 20px;
 }
 
 .alert-danger ul {
@@ -111,7 +111,7 @@ body::-webkit-scrollbar {
 
 .invalid-feedback {
   display: block;
-  color: red;
+  color: #dc3545;
   margin-top: 0;
 }
 
@@ -124,9 +124,34 @@ body::-webkit-scrollbar {
 }
 
 .field_with_errors textarea#post_description {
-  border-color: red;
+  border-color: #dc3545;
 }
 
 .field_with_errors textarea#post_description:focus {
   box-shadow: 0 0 0 0.2rem rgba(167, 40, 40, 0.25);
+}
+
+.custom-file input#post_image:focus {
+  outline: none;
+}
+
+.settings-form label {
+  display: block;
+}
+
+.settings-form {
+  max-width: 330px;
+}
+
+.field_with_errors input {
+  border-color: #dc3545;
+}
+
+.field_with_errors input:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(167, 40, 40, 0.25);
+}
+
+.settings-form input:focus {
+  outline: none;
 }
