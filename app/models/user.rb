@@ -14,7 +14,9 @@ class User < ApplicationRecord
                     styles: {
                             thumb: ["x300", :jpeg],
                             original: [:jpeg]
-                        }
+                        },
+                    default_url: "/images/thumbs/logo.png"
+
   validates_attachment :image,
                      content_type: { content_type: /\Aimage\/.*\z/ }
 
@@ -43,4 +45,18 @@ class User < ApplicationRecord
   def following_posts
     followers.map(&:posts).flatten
   end
+
+  def user_ids
+    User.all.map {|user| user.id}
+  end
+
+  def following_ids
+    self.followers.map {|follower| follower.id}
+  end
+
+  def not_following
+    id_array = self.user_ids - self.following_ids
+    id_array.map {|id| User.find(id)}
+  end
+
 end
