@@ -2,13 +2,15 @@
 
 
 <div class="post-index-scroll bg-tansparent" style="max-height: 100vh;">
-    <div class="users-scroll" style="width: 30rem;">
-        <% User.all.each do |user| %>
-            <% if (user.image.exists?) && (user != @current_user) %>
-                <div class="following-scroll text-center ml-2"><%= link_to image_tag(user.image.url, class: "show-pic mx-autp"), user_path(user) %><%= link_to user.username, user_path(user), class: "mt-4"%>  </div>
+    <% if @user.followers.any? %>
+        <div class="users-scroll" style="max-width: 30rem;">
+            <% @user.followers.each do |user| %>
+                <% if user.image.exists? %>
+                    <div class="following-scroll text-center ml-2 mr-2"><%= link_to image_tag(user.image.url, class: "show-pic mx-autp"), user_path(user) %><%= link_to user.username, user_path(user), class: "mt-4"%>  </div>
+                <% end %>
             <% end %>
-        <% end %>
-    </div>
+        </div>
+    <% end %>
     <div>
         <% @posts.each do |post| %>
             <% if post.image.exists? %>
@@ -30,7 +32,7 @@
         <% end %>
     </div>
 </div>
-<div class="right">
+<div class="right d-none d-sm-none d-md-none d-lg-none d-xl-block">
     <div class="modal-dialog-centered profile-header index">
         <div class="profile-pic">
             <% if @user.image.exists? %>
@@ -52,9 +54,14 @@
         </div>
             <div class="top-five">
                 <h3 class="border-bottom border-primary mt-5 mb-4">Recommended Cuties for you to follow!</h3>
-                <% @user.top_five.each do |user| %>
-                    <div class="mt-1">
-                        <p><strong><%= link_to user.username, user_path(user) %></strong> - <%= user.posts.count %> <%= " post".pluralize(user.posts.count) %></p>
+                <% @user.not_following[0...5].each do |user| %>
+                    <div class="row mt-2">
+                        <% if user.image.exists? %>
+                            <%= link_to image_tag(user.image.url, class: "show-pic"), user_path(user) %>
+                        <% end %>
+                        <div class="mt-2 ml-2">
+                            <h5><strong><%= link_to user.username, user_path(user) %></strong> - <%= user.posts.count %> <%= " post".pluralize(user.posts.count) %></h5>
+                        </div>
                     </div>
                 <% end %>
             </div>
