@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   
   validates :username, presence: { message: 'You need a username! How else will we know what to call you?'}
-  validates :username, uniqueness: true
+  validates :username, uniqueness: { message: 'Shoot! Someone is already using this username...'}
   has_attached_file :image,
                     styles: {
                             thumb: ["x300", :jpeg],
@@ -42,5 +42,9 @@ class User < ApplicationRecord
 
   def following_posts
     followers.map(&:posts).flatten
+  end
+
+  def following?(user)
+    followers.include? user
   end
 end
