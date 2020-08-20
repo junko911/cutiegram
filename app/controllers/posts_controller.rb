@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params(:description, :image))
     @post.user = @current_user
 
-    if @post.save!
+    if @post.save
       @post.get_tags(params[:post][:image])
       redirect_to @post
     else
