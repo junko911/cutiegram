@@ -126,3 +126,7 @@ body {
 .field_with_errors textarea#post_description:focus {
   box-shadow: 0 0 0 0.2rem rgba(167, 40, 40, 0.25);
 }
+
+.custom-file input#post_image:focus {
+  outline: none;
+}
