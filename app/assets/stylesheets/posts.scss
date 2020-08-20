@@ -14,6 +14,11 @@
     object-fit: cover;
 }
 
+.post-index-scroll {
+    overflow-y: hidden;
+    overflow: scroll;
+}
+
 .index-card {
     height: 30px;
     width: 30px;
@@ -45,7 +50,9 @@ p.card-head {
 }
 
 .likes {
-    float: left;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 .comments p {
     display: inline-block
@@ -93,11 +100,10 @@ ul {
 }
 
 .bigger {
-    font-size: 25px;
     margin-right: 50px;
 }
 
-input#post_image {
+input#post_image, .bigger {
     font-size: 25px;
 }
 
@@ -121,4 +127,31 @@ a {
 
 .inline {
     display: inline-block;
+}
+
+.profile-name {
+    display: flex;
+    flex-direction: column;
+    font-size: 25px;
+}
+
+.profile-header.index {
+    max-height: 100px;
+}
+
+.right, .top-five {
+    display: flex;
+    flex-direction: column;
+}
+
+.top-five h3 {
+    font-size: 30px;
+}
+
+.top-five p {
+    font-size: 23.5px;
+}
+
+.emoji-btn {
+    font-size: 25px;
 }
