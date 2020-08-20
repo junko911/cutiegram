@@ -19,6 +19,10 @@ body {
   background-color: whitesmoke;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
  #myVideo {
   position: fixed;
   z-index: -1;

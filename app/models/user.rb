@@ -1,7 +1,9 @@
 class User < ApplicationRecord
   has_many :posts, :dependent => :destroy
   has_many :comments, :dependent => :destroy
-  validates :username, presence: { message: 'You need username!'}
+  has_many :likes
+  
+  validates :username, presence: { message: 'You need a username! How else will we know what to call you?'}
   validates :username, uniqueness: true
   has_attached_file :image,
                     styles: {
@@ -21,15 +23,15 @@ class User < ApplicationRecord
     end
   end
 
-  def likes
-    self.posts.map {|post| post.likes}
+  def my_likes
+    self.posts.map {|post| post.likes.count}
   end
 
   def num_likes
-    self.likes.inject(0){|sum, num| sum + num}
+    self.my_likes.inject(0){|sum, num| sum + num}
   end
 
   def top_five
-    User.all.sort_by {|user| user.num_likes}
+    User.all.sort_by {|user| -user.num_likes}
   end
 end

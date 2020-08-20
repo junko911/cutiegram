@@ -17,6 +17,11 @@
 .post-index-scroll {
     overflow-y: hidden;
     overflow: scroll;
+    padding-right: 15vw;
+}
+
+.post-index-scroll::-webkit-scrollbar {
+    display: none;
 }
 
 .index-card {
@@ -29,14 +34,9 @@ p.card-head {
     color: gray
 }
 
-.card-top {
+.card-top, .name-description, .date-posted {
     display: flex;
     flex-direction: column;
-}
-
-.name-description {
-    display: flex;
-    flex-direction: row;
 }
 
 .flex-this {
@@ -135,13 +135,15 @@ a {
     font-size: 25px;
 }
 
-.profile-header.index {
-    max-height: 100px;
-}
-
 .right, .top-five {
     display: flex;
     flex-direction: column;
+}
+
+.right {
+    position: absolute;
+    top: 200px;
+    right: 15vw;
 }
 
 .top-five h3 {

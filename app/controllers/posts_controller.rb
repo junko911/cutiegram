@@ -37,8 +37,15 @@ class PostsController < ApplicationController
   end
 
   def like
-    @post.increment!(:likes)
-
+    @post = Post.find(params[:id])
+    Like.create(user_id: @current_user.id, post_id: @post.id)
+    redirect_to post_path(@post)
+  end
+  
+  def unlike
+    @post = Post.find(params[:id])
+    like = Like.find_by(user_id: @current_user.id, post_id: @post.id)
+    like.destroy
     redirect_to post_path(@post)
   end
 

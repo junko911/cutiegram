@@ -3,6 +3,8 @@ class Post < ApplicationRecord
   has_many :comments, :dependent => :destroy
   has_many :post_tags, :dependent => :destroy
   has_many :tags, through: :post_tags
+  has_many :likes
+
   validates :description, presence: { message: "Post needs a description!"}
   validates :image, presence: { message: "Post needs an image!"}
   has_attached_file :image,
@@ -12,6 +14,10 @@ class Post < ApplicationRecord
                         }
   validates_attachment :image,
                      content_type: { content_type: /\Aimage\/.*\z/ }
+
+  def liked?(user)
+    !!self.likes.find {|like| like.user_id == user.id}
+  end
 
   def get_tags(image)
     api_key = ENV["GOOGLE_API_KEY"]

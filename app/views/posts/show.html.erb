@@ -8,15 +8,17 @@
           <div class="card-body">
             <div class="border-bottom border-secondary card-top">
                 <% if @post.user.image.exists?%>
-                  <%= image_tag(@post.user.image.url, class: "show-pic") %>
+                  <%= link_to image_tag(@post.user.image.url, class: "show-pic"), user_path(@post.user) %>
                 <% end %>
               <div class="name-description">
-                <h4 class="card-title card-head"><%= link_to @post.user.username, user_path(@post.user) %></h4><p class="ml-4 card-head">Posted on <%= @post.created_at.strftime("%B %d, %Y at %I:%M %p") %></p>
+                <div class="date-posted">
+                  <h4 class="card-title card-head"><%= link_to @post.user.username, user_path(@post.user) %></h4><p class="card-head" style="font-size: 15px;"><%= "🗓️ #{@post.created_at.strftime("%B %d, %Y at %I:%M %p")}" %></p>
+                </div>
                 <p><%= @post.description %></p>
               </div>
             </div>
             <div class="border-bottom border-secondary comments" >
-              <h5>Comments:</h5>
+              <h5 class="mt-1">Comments:</h5>
                 <ul>
                   <% if @post.comments.blank? %>
                   <li>
@@ -32,8 +34,12 @@
                 </ul>
             </div>
             <div class="likes mt-3">
-              <%= button_to "💚", like_post_path(@post), method: :patch, class: "btn emoji-btn" %>
-              <p class="ml-1 mb-0">Liked by: <%= @post.likes %><%=" person".pluralize(@post.likes)%> </p>
+              <% if @post.liked?(@current_user) %>
+                <%= button_to "♡", like_path(@post), method: :delete, class: "btn emoji-btn" %>
+              <% else %>
+                <%= button_to "💚", like_path(@post), method: :put, class: "btn emoji-btn" %>
+              <% end %>
+              <p class="ml-1 mb-0">Liked by: <%= @post.likes.count %><%=" person".pluralize(@post.likes.count)%> </p>
             </div>
             <div class="comment-form">
               <%= form_for [@post, Comment.new] do |f| %>
