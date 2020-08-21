@@ -1,7 +1,4 @@
 class User < ApplicationRecord
-  # include Rails.application.routes.url_helpers
-  # include ActionView::Helpers::UrlHelper
-
   has_many :posts, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :likes
@@ -66,7 +63,4 @@ class User < ApplicationRecord
   def following?(user)
     followers.include? user
   end
-
-
-
 end
