@@ -25,24 +25,47 @@ img.show{
     font-size: x-large;
 }
 
-.profile-header {
+.profile-header, .show-profile-header {
     display: flex;
-    flex-direction: column;
     margin-top: 15px;
     padding: 7.5px;
+}
+
+.profile-header {
+    flex-direction: column;
+}
+
+.show-profile-header {
+    flex-direction: row;
 }
 
 .profile-pic {
     display: flex;
     align-items: center;
     flex-direction: row;
-    padding: inherit;
     margin-left: 30px;
     margin-bottom: 20px;
 }
 
+.show-profile-pic {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: inherit;
+    margin-left: 25px;
+}
+
 .profile-pic h4 {
     margin-left: 50px;
+}
+
+.show-page-pic {
+    height: 150px;
+    width: 150px;
+
+    border-radius: 50%;
+    border: 2px solid #343a40;
+    object-fit: cover;
 }
 
 .user-show-images {

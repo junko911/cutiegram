@@ -11,11 +11,11 @@ class User < ApplicationRecord
   validates :username, presence: { message: 'You need a username! How else will we know what to call you?'}
   validates :username, uniqueness: { message: 'Shoot! Someone is already using this username...'}
   has_attached_file :image,
+                    default_url: ":style/default.jpg",
                     styles: {
                             thumb: ["x300", :jpeg],
                             original: [:jpeg]
-                        },
-                    default_url: "/images/thumbs/logo.png"
+                        }
 
   validates_attachment :image,
                      content_type: { content_type: /\Aimage\/.*\z/ }
@@ -55,12 +55,16 @@ class User < ApplicationRecord
   end
 
   def not_following
-    id_array = self.user_ids - self.following_ids
+    id_array = self.user_ids - self.following_ids - [self.id]
     id_array.map {|id| User.find(id)}
   end
 
   def following?(user)
     followers.include? user
+  end
+
+  def followed_by_names
+    usernames = self.followeds.map {|followed| followed.username}
   end
 
 end
