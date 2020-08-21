@@ -86,20 +86,15 @@ img.show{
     display: block;
 }
 
-.settings-form input:focus {
-    outline: none;
-}
-
-.settings-forms.form-control {
+.was-validated .form-control:valid {
     background: none;
     font-size: 25px;
 }
 
-.field_with_errors.form-control {
+.field_with_errors input#user_username, .field_with_errors input#user_password_confirmation {
     border-color: #dc3545;
 }
 
-.settings-forms.field_with_errors.form-control:focus {
-    // border-color: red;
-    outline: none;
+.field_with_errors input#user_username:focus, , .field_with_errors input#user_password_confirmation:focus {
+    box-shadow: 0 0 0 0.2rem rgba(167, 40, 40, 0.25);
 }

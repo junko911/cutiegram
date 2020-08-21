@@ -104,6 +104,7 @@ body::-webkit-scrollbar {
   display: block;
   color: #dc3545;
   margin-top: 0;
+  font-size: 20px;
 }
 
 .was-validated textarea.form-control:valid, textarea.form-control.is-valid {
