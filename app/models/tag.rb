@@ -9,4 +9,8 @@ class Tag < ApplicationRecord
             nil
         end
     end
+
+    def self.random_five_tags
+        Tag.all.sample(5)
+    end
 end
