@@ -8,10 +8,11 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name: "Relationship", foreign_key: :followed_id, dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :follower
   
+
   validates :username, presence: { message: 'You need a username! How else will we know what to call you?'}
   validates :username, uniqueness: { message: 'Shoot! Someone is already using this username...'}
   has_attached_file :image,
-                    default_url: ":style/default.jpg",
+                    default_url: ":style/missing_avatar.jpg",
                     styles: {
                             thumb: ["x300", :jpeg],
                             original: [:jpeg]
@@ -64,7 +65,14 @@ class User < ApplicationRecord
   end
 
   def followed_by_names
+    followed_string = "Followed by "
     usernames = self.followeds.map {|followed| followed.username}
+    usernames2 = usernames[0..2].join(", ")
+    followed_string << usernames2
+    if usernames.length > 3
+      followed_string << " and #{usernames.length-3}" + " other".pluralize(usernames.length-3)
+    end
+    followed_string
   end
 
 end

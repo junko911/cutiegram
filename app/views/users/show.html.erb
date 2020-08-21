@@ -1,7 +1,7 @@
 <div class="border-bottom border-secondary mx-auto modal-dialog-centered show-profile-header row" style="width: 40%">
-    <% if @user.image.exists?%>
+  
       <%= image_tag(@user.image.url(:original), class: "show-page-pic mr-5") %>
-    <% end %>
+
 
   <div class="show-profile-pic">
     <div class="row">
@@ -23,7 +23,11 @@
       <% end %>
       <h6 class="card-title mt-3 ml-1"> <%= @user.num_likes %><%= " like".pluralize(@user.num_likes) %> total </h6>
     </div>
-    <p>Followed by <%= @user.followed_by_names[0..2].join(", ") %> </p>
+    <% if @user.followeds.any? %>
+      <p><%= @user.followed_by_names %> </p>
+    <% else %>
+      <p>You have no followers yet</p>
+    <% end %>
   </div>
     
 </div>
