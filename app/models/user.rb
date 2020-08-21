@@ -11,7 +11,7 @@ class User < ApplicationRecord
   validates :username, presence: { message: 'You need a username! How else will we know what to call you?'}
   validates :username, uniqueness: { message: 'Shoot! Someone is already using this username...'}
   has_attached_file :image,
-                    default_url: "/assets/images/:style/default.jpg",
+                    default_url: ":style/default.jpg",
                     styles: {
                             thumb: ["x300", :jpeg],
                             original: [:jpeg]
