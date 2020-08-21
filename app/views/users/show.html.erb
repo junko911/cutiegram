@@ -1,7 +1,7 @@
 <div class="border-bottom border-secondary mx-auto modal-dialog-centered show-profile-header row" style="width: 40%">
-    <% if @user.image.exists?%>
+  
       <%= image_tag(@user.image.url(:original), class: "show-page-pic mr-5") %>
-    <% end %>
+
 
   <div class="show-profile-pic">
     <div class="row">
@@ -23,8 +23,35 @@
       <% end %>
       <h6 class="card-title mt-3 ml-1"> <%= @user.num_likes %><%= " like".pluralize(@user.num_likes) %> total </h6>
     </div>
-    <p>Followed by <%= @user.followed_by_names[0..2].join(", ") %> </p>
+    <div class="followers-list">
+      <% if @user.followeds.any? %>
+        <p>Followed by </p>
+        <% counter = 0 %>
+        <% counter2 = 0%>
+        <% @user.followeds.each do |user| %>
+            <% if counter < 2 %>
+            <p class="ml-1"> <%= link_to user.username, user_path(user)%><%= ", "%> </p>
+            <% elsif counter == 2 %>
+              <p class="ml-1"> <%= link_to user.username, user_path(user)%><%= " "%> </p>
+            <% else %>
+              <% if @user.followeds.count > 3 %>
+                <% if counter2 == 0 %>
+                  <p class="ml-1"><%= " and #{@user.followeds.count-3} others." %></p>
+                  <% counter2 += 1%>
+                <% end %>
+              <% end %>
+            <% end %>
+            <% counter += 1%>
+        <% end %>
+      <% else %>
+        <p>You have no followers yet</p>
+      <% end %>
+    </div>
   </div>
+
+
+    
+
     
 </div>
 <div class="container mt-5 user-show-images">

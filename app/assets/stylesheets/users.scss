@@ -102,3 +102,8 @@ img.show{
 form#new_user {
     width: 500px;
 }
+
+.followers-list {
+    display: flex;
+    flex-direction: row;
+}
