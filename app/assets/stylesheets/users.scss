@@ -91,10 +91,14 @@ img.show{
     font-size: 25px;
 }
 
-.field_with_errors input#user_username, .field_with_errors input#user_password_confirmation {
+.field_with_errors input#user_username, .field_with_errors input#user_password, .field_with_errors input#user_password_confirmation {
     border-color: #dc3545;
 }
 
-.field_with_errors input#user_username:focus, , .field_with_errors input#user_password_confirmation:focus {
+.field_with_errors input#user_username:focus, .field_with_errors input#user_password_confirmation:focus {
     box-shadow: 0 0 0 0.2rem rgba(167, 40, 40, 0.25);
+}
+
+form#new_user {
+    width: 500px;
 }

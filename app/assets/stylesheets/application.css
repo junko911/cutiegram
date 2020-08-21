@@ -107,10 +107,6 @@ body::-webkit-scrollbar {
   font-size: 20px;
 }
 
-.was-validated textarea.form-control:valid, textarea.form-control.is-valid {
-  background: none;
-}
-
 .form-control.is-valid:focus .was-validated .form-control.is-valid {
   box-shadow: 0 0 0 0.2rem rgba(40, 159, 167, 0.25);
 }
@@ -124,3 +120,11 @@ body::-webkit-scrollbar {
   box-shadow: 0 0 0 0.2rem rgba(167, 40, 40, 0.25);
 }
 
+.form-control.is-valid, .was-validated .form-control:valid {
+  background-image: none;
+  background-color: #fff;
+}
+
+.field_with_errors input#user_username, .field_with_errors input#user_password, .field_with_errors input#user_password_confirmation {
+  border-color: #dc3545;
+}
