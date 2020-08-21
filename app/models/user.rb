@@ -46,6 +46,10 @@ class User < ApplicationRecord
     followers.map(&:posts).flatten
   end
 
+  def following_and_self_posts
+    following_posts + posts
+  end
+
   def user_ids
     User.all.map {|user| user.id}
   end

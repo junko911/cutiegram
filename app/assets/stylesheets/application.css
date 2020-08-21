@@ -76,7 +76,7 @@ body::-webkit-scrollbar {
   box-sizing: border-box;
   height: auto;
   padding: 10px;
-  font-size: 16px;
+  font-size: 25px;
 }
 .form-signin .form-control:focus {
   z-index: 2;
@@ -96,18 +96,23 @@ body::-webkit-scrollbar {
   margin-right: 20px;
 }
 
+.navbar-dark .navbar-nav .nav-link {
+  font-size: 20px;
+}
+
 .alert-danger ul {
   list-style: circle;
+}
+
+.alert-danger {
+  font-size: 20px;
 }
 
 .invalid-feedback {
   display: block;
   color: #dc3545;
   margin-top: 0;
-}
-
-.was-validated textarea.form-control:valid, textarea.form-control.is-valid {
-  background: none;
+  font-size: 20px;
 }
 
 .form-control.is-valid:focus .was-validated .form-control.is-valid {
@@ -123,3 +128,15 @@ body::-webkit-scrollbar {
   box-shadow: 0 0 0 0.2rem rgba(167, 40, 40, 0.25);
 }
 
+.form-control.is-valid, .was-validated .form-control:valid {
+  background-image: none;
+  background-color: #fff;
+}
+
+.field_with_errors input#user_username, .field_with_errors input#user_password, .field_with_errors input#user_password_confirmation {
+  border-color: #dc3545;
+}
+
+label {
+  font-size: 25px;
+}

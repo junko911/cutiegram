@@ -1,9 +1,9 @@
-<%= form_for(@user) do |user_builder| %>
+<%= form_for @user, html: {class: "was-validated"} do |user_builder| %>
     <div class="settings-form">
         <%= user_builder.label "Username: " %>
         <%= user_builder.text_field :username, class: "form-control" %>
             <div class="invalid-feedback">
-            <%= @user.errors[:username].join if @user.errors[:username].any? %>
+                <%= @user.errors[:username].join if @user.errors[:username].any? %>
             </div>
         <br>
         <div>
@@ -22,7 +22,7 @@
             <%= user_builder.label "Confirm Password: " %>
             <%= user_builder.text_field :password_confirmation, class: "form-control" %>
             <div class="invalid-feedback">
-            <%= @user.errors[:password_confirmation].join if @user.errors[:password_confirmation].any? %>
+                <%= @user.errors[:password_confirmation].join if @user.errors[:password_confirmation].any? %>
             </div>
         </div>
         <%= user_builder.submit "Update Profile", class: "btn btn-primary btn-lg mt-5 btn-block" %>

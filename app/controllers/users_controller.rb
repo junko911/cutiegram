@@ -2,7 +2,12 @@ class UsersController < ApplicationController
     before_action :find_user, except: [:index, :new, :create]
     skip_before_action :authorized, only: [:new, :create]
 
-    def show
+    def following
+        @users = @user.followers
+    end
+
+    def followed
+        @users = @user.followeds
     end
 
     def new

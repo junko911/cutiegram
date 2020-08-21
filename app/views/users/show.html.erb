@@ -14,8 +14,8 @@
     </div>
     <div class="row mt-2">
       <h5 class="ml-2 mr-1"><strong><%= @user.posts.count %></strong><%=" post".pluralize(@user.posts.count)%></h5>
-      <h5 class="ml-1 mr-1"><strong><%= @user.followeds.count %></strong><%=" follower".pluralize(@user.followeds.count)%></h5>
-      <h5 class="ml-1 mr-1"><strong><%= @user.followers.count %></strong> following</h5>
+      <h5 class="ml-1 mr-1"><strong><%= link_to "#{@user.followeds.count} follower".pluralize(@user.followeds.count), followed_user_path(@user) %></strong></h5>
+      <h5 class="ml-1 mr-1"><strong><%= link_to "#{@user.followers.count} following", following_user_path(@user) %></strong></h5>
     </div>
     <div class="profile-name">
       <% if @user.location.present? %>
