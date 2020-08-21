@@ -13,7 +13,7 @@
         <% if @posts.blank? %>
             <div id="follow-suggestion">
                 <h5>Looks like you don't have any followers...</h5>
-                <h5>Find people to follow by tags like:</h5>
+                <h5>Maybe these tags will give you some ideas!</h5>
                 <% Tag.random_five_tags.each do |tag| %>
                     <%= link_to '#' + tag.name, searches_path(query: tag.name), class: "btn btn-outline-secondary" %>
                 <% end %>
