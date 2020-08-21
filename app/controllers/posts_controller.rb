@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @user = @current_user
-    @posts = @user.following_posts.sort_by(&:created_at).reverse
+    @posts = @user.following_and_self_posts.sort_by(&:created_at).reverse
   end
 
   def new

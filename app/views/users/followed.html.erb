@@ -1,0 +1,15 @@
+<div style="width: 300px; margin:150px auto;">
+  <h4><%= @user.username %> is followed by...</h4>
+    <% if @users.any? %>
+      <ul class="list-group">
+      <% @users.each do |user| %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <%= link_to image_tag(user.image.url(:original), class: "show-pic mx-autp"), user_path(user) %><%= link_to user.username, user_path(user)%>
+          <span class="badge badge-primary badge-pill"><%= user.posts.count %> posts</span>
+        </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <h5>No one yet... Get out there and find some Cuties!</h5>
+    <% end %>
+</div>
