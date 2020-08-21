@@ -61,8 +61,22 @@ img.show{
 
 .settings-form label {
     display: block;
-  }
+}
 
 .settings-form input:focus {
     outline: none;
-  }
+}
+
+.form-control {
+    background: none;
+    font-size: 25px;
+}
+
+.field_with_errors.form-control {
+    border-color: #dc3545;
+}
+
+.settings-forms.field_with_errors.form-control:focus {
+    // border-color: red;
+    outline: none;
+}
