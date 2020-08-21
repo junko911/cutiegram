@@ -137,7 +137,8 @@ a {
 
 .profile-name {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
     font-size: 25px;
 }
 
@@ -159,6 +160,12 @@ a {
 
 .top-five p {
     font-size: 23.5px;
+}
+
+.top-five input {
+    position: absolute;
+    right: 0px;
+    top: 5px;
 }
 
 .emoji-btn {
