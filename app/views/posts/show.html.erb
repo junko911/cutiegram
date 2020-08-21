@@ -2,13 +2,13 @@
     <div class="card mb-3 mx-auto border-dark" style="max-width: 50vw">
       <div class="row no-gutters">
         <div class="col-md-6 flex-this">
-          <%= image_tag(@post.image.url(:thumb), class: "card-img show-img m-0")%>
+          <%= image_tag(@post.image.url(:original), class: "card-img show-img m-0")%>
         </div>
         <div class="col-md-6 flex-this">
           <div class="card-body">
             <div class="border-bottom border-secondary card-top">
                 <% if @post.user.image.exists?%>
-                  <%= link_to image_tag(@post.user.image.url, class: "show-pic"), user_path(@post.user) %>
+                  <%= link_to image_tag(@post.user.image.url(:original), class: "show-pic"), user_path(@post.user) %>
                 <% end %>
               <div class="name-description">
                 <div class="date-posted">

@@ -2,11 +2,6 @@ class UsersController < ApplicationController
     before_action :find_user, except: [:index, :new, :create]
     skip_before_action :authorized, only: [:new, :create]
 
-    # def index
-    #     @users = User.search(params[:query])
-    #     render :index
-    # end
-
     def show
     end
 
@@ -15,7 +10,8 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.create(user_params(:username, :password, :password_confirmation, :query))
+        @user = User.create(user_params(:username, :password, :password_confirmation, :image, :query))
+
         if @user.valid?
             session[:user_id] = @user.id
             redirect_to posts_path
@@ -50,7 +46,7 @@ class UsersController < ApplicationController
     def unfollow
         @relationship = Relationship.find_by(follower: @user, followed: @current_user)
         @relationship.destroy
-        redirect_to @current_user
+        redirect_to posts_path
     end
 
     private
