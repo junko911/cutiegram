@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  # include Rails.application.routes.url_helpers
+  # include ActionView::Helpers::UrlHelper
+
   has_many :posts, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :likes
@@ -64,15 +67,6 @@ class User < ApplicationRecord
     followers.include? user
   end
 
-  def followed_by_names
-    followed_string = "Followed by "
-    usernames = self.followeds.map {|followed| followed.username}
-    usernames2 = usernames[0..2].join(", ")
-    followed_string << usernames2
-    if usernames.length > 3
-      followed_string << " and #{usernames.length-3}" + " other".pluralize(usernames.length-3)
-    end
-    followed_string
-  end
+
 
 end

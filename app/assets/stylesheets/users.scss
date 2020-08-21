@@ -103,3 +103,8 @@ img.show{
     // border-color: red;
     outline: none;
 }
+
+.followers-list {
+    display: flex;
+    flex-direction: row;
+}
