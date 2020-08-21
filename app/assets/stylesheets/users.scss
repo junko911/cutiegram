@@ -54,3 +54,15 @@ img.show{
 .user-show-images::-webkit-scrollbar {
     display: none;
 }
+
+.settings-form {
+    max-width: 330px;
+}
+
+.settings-form label {
+    display: block;
+  }
+
+.settings-form input:focus {
+    outline: none;
+  }
