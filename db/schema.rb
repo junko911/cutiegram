@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_08_20_183505) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: :cascade do |t|
     t.string "content"
     t.integer "post_id"
@@ -21,8 +24,8 @@ ActiveRecord::Schema.define(version: 2020_08_20_183505) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "post_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_likes_on_post_id"
@@ -37,7 +40,7 @@ ActiveRecord::Schema.define(version: 2020_08_20_183505) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "description"
     t.integer "likes", default: 0
     t.string "image_file_name"
