@@ -120,6 +120,12 @@ body::-webkit-scrollbar {
   font-size: 20px;
 }
 
+.navbar-brand img {
+  height: 30px;
+  width: 30px;
+  margin-right: 5px;
+}
+
 .alert-danger ul {
   list-style: circle;
 }
