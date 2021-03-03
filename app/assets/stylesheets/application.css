@@ -23,16 +23,34 @@ body::-webkit-scrollbar {
   display: none;
 }
 
- #myVideo {
+ #videoBG {
   position: fixed;
   z-index: -1;
-  height: auto;
-  width: 100%;
-  top:0;  
-  left:0;  
-  right:0;  
-  bottom:0;
 }
+
+@media (min-aspect-ratio: 16/9) {
+  #videoBG {
+      width: 100%;
+      height: auto;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  #videoBG { 
+      width: auto;
+      height: 100%;
+  }
+}
+
+/* @media (max-width: 767px) {
+  #videoBG {
+      display: none;
+  }
+  body {
+      background: url('poster.jpg');
+      background-size: cover;
+  }
+} */
 
 .signup {
   position: absolute;
