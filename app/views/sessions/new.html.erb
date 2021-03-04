@@ -1,19 +1,17 @@
 <%= render 'shared/background' %>
 
-<div class="login-page">
-  <div class="form-signin">
-  <h1 class="mb-3">Please Login</h1>
-  <%= form_for :session, url: login_path do |f| %>
-    <% if flash[:error] %>
-      <div class="alert alert-danger" role="alert">
-        <%= flash[:error] %>
-      </div>
+<div class="login-form">
+  <h2 class="mb-3">Please Login</h2>
+  <div class="form-group">
+    <%= form_for :session, url: login_path do |f| %>
+      <% if flash[:error] %>
+        <div class="alert alert-danger" role="alert">
+          <%= flash[:error] %>
+        </div>
+      <% end %>
+      <%= f.text_field :username, class: "form-control mb-3", placeholder: "Username" %>
+      <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+      <%= f.submit 'Login', class: "btn btn-lg btn-primary btn-block" %>
     <% end %>
-    <%= f.label :username, class: "sr-only" %>
-    <%= f.text_field :username, class: "form-control", placeholder: "Username" %>
-    <%= f.label :password, class: "sr-only" %>
-    <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
-    <%= f.submit 'Login', class: "btn btn-lg btn-primary btn-block" %>
-  <% end %>
   </div>
 </div>

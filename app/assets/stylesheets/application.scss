@@ -61,14 +61,7 @@ body::-webkit-scrollbar {
   color: #f1f1f1;
 }
 
-.login-page {
-  display: flex;
-  align-items: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
-}
-
-.form-signin {
+.login-form {
   width: 100%;
   max-width: 330px;
   padding: 15px;
@@ -79,8 +72,8 @@ body::-webkit-scrollbar {
   right: 0;
 }
 
-.form-signin {
-  h1 {
+.login-form {
+  h2 {
     color:  #f1f1f1;
     text-shadow: 2px 2px #6c757d;
   }
@@ -88,6 +81,7 @@ body::-webkit-scrollbar {
   .checkbox {
     font-weight: 400;
   }
+
   .form-control {
     position: relative;
     box-sizing: border-box;
@@ -95,14 +89,17 @@ body::-webkit-scrollbar {
     padding: 10px;
     font-size: 25px;
   }
+  
   .form-control:focus {
     z-index: 2;
   }
+
   input[type="email"] {
     margin-bottom: -1px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
   }
+
   input[type="password"] {
     margin-bottom: 10px;
     border-top-left-radius: 0;
