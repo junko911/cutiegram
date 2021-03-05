@@ -92,14 +92,6 @@ ul {
     margin: 15px;
 }
 
-.new-post {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 15vh;
-}
-
 .inner-form {
     display: flex;
     flex-direction: row;
@@ -190,11 +182,6 @@ a {
         margin: 10px;
         border-radius: 50%;
     }
-}
-
-.container.new-post {
-    margin-right: 50px;
-    margin-left: 50px;
 }
 
 #new-post-form {
