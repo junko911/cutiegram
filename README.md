@@ -20,6 +20,7 @@ Make sure you have Ruby and Bundler installed.
 bundle install
 rails db:create
 rails db:migrate
+rails s
 ```
 
 Your app should now be running on [localhost:5000](http://localhost:5000/).
