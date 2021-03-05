@@ -2,12 +2,11 @@
     <div class="row">
         <div class="col">
             <% if @posts.blank? %>
-                <div id="follow-suggestion">
-                    <h5>Either you're not following anyone,</h5>
-                    <h5>Or they just haven't posted anything yet.</h5>
+                <div class="mt-4">
+                    <h5>Either you're not following anyone, or they just haven't posted anything yet.</h5>
                     <h5>Maybe these tags will give you some ideas!</h5>
                     <% Tag.random_five_tags.each do |tag| %>
-                        <%= link_to '#' + tag.name, searches_path(query: tag.name), class: "btn btn-outline-secondary" %>
+                        <%= link_to '#' + tag.name, searches_path(query: tag.name), class: "btn btn-outline-secondary mt-2" %>
                     <% end %>
                 </div>
             <% else %>
