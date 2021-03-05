@@ -12,19 +12,17 @@
                 </div>
             <% else %>
                 <% @posts.each do |post| %>
-                <% if post.image.exists? %>
-                    <div class="card mx-auto mt-4" style="width: 30rem;">
-                        <div class="card mt-0" style="width: 30rem;">
-                            <div class="card-body modal-dialog-centered" style="height: 3.5rem;">
-                                <%= image_tag(post.user.image.url(:original), class: "show-pic index-card") %>
-                                <strong><p class="card-text"><%=link_to post.user.username, user_path(post.user)%></p></strong>
+                    <% if post.image.exists? %>
+                        <div class="card" style="width: 30rem">
+                            <div class="card-header">
+                                <%= image_tag(post.user.image.url(:original), class: "show-pic mr-2") %>
+                                <span class="card-text font-weight-bold"><%=link_to post.user.username, user_path(post.user)%></span>
                             </div>
-                            <%= link_to (image_tag(post.image.url(:original), class: "card-img-top")), post_path(post)%>
-                            <div class="card-body text-center">
-                                <p class="card-text"> <%=post.description%> </p>
+                            <div class="card-body">
+                                <%= link_to (image_tag(post.image.url(:original))), post_path(post)%>
+                                <p class="card-text"><%=post.description%></p>
                             </div>
                         </div>
-                    </div>
                     <% end %>
                 <% end %>
             <% end %>
