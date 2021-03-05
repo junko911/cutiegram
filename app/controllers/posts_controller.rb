@@ -4,8 +4,7 @@ class PostsController < ApplicationController
   before_action :find_post, only: %i[show edit update destroy like]
 
   def index
-    @user = @current_user
-    @posts = @user.following_and_self_posts.sort_by(&:created_at).reverse
+    @posts = current_user.following_and_self_posts.sort_by(&:created_at).reverse
   end
 
   def new
@@ -13,8 +12,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params(:description, :image))
-    @post.user = @current_user
+    @post = current_user.posts.new(post_params(:description, :image))
 
     if @post.save
       @post.get_tags(params[:post][:image])

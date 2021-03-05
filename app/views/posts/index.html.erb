@@ -28,28 +28,28 @@
         </div>
         <div class="col">
             <div class="profile-pic">
-                <%= link_to image_tag(@user.image.url(:original), class: "show-pic"), user_path(@user) %>
-                <% if @user.location.present? %>
-                    <h4><i class='fas fa-map-marker-alt mr-1' style='font-size:17px'></i><%= link_to @user.location, "http://www.google.com/maps/place/#{@user.location}", style: "font-size: 17px", target: :_blank %></h4>
+                <%= link_to image_tag(current_user.image.url(:original), class: "show-pic"), current_user %>
+                <% if current_user.location.present? %>
+                    <h4><i class='fas fa-map-marker-alt mr-1' style='font-size:17px'></i><%= link_to current_user.location, "http://www.google.com/maps/place/#{current_user.location}", style: "font-size: 17px", target: :_blank %></h4>
                 <% end %>
             </div>
             <div class="profile-name">
                 <div class="float-left ml-2">
-                    <h3 class="card-title"> <%= link_to @user.username, user_path(@user)%> </h3>
+                    <h3 class="card-title"> <%= link_to current_user.username, current_user%> </h3>
                 </div>
                 <div class="float-right ml-5">
-                    <h5 class="card-title mt-1"> <%= @user.num_likes %><%= " like".pluralize(@user.num_likes) %> total </h5>
+                    <h5 class="card-title mt-1"> <%= current_user.num_likes %><%= " like".pluralize(current_user.num_likes) %> total </h5>
                 </div>
             </div>
             <div class="top-five">
                 <h3 class="border-bottom border-primary mt-5 mb-4">Recommended Cuties for you to follow!</h3>
-                <% @user.not_following.sample(5).each do |user| %>
+                <% current_user.not_following.sample(5).each do |user| %>
                     <div class="row mt-2 position-relative">
-                        <%= link_to image_tag(user.image.url(:original), class: "show-pic"), user_path(user) %>
+                        <%= link_to image_tag(user.image.url(:original), class: "show-pic"), user %>
                         <div class="mt-2 ml-2">
-                            <h5><strong><%= link_to user.username, user_path(user) %></strong> - <%= user.posts.count %> <%= " post".pluralize(user.posts.count) %></h5>
+                            <h5><strong><%= link_to user.username, user %></strong> - <%= user.posts.count %> <%= " post".pluralize(user.posts.count) %></h5>
                         </div>
-                        <%= button_to 'Follow', follow_user_path(user), class: "btn btn-primary ml-5 btn-sm" %>
+                        <%= button_to 'Follow', user, class: "btn btn-primary ml-5 btn-sm" %>
                     </div>
                 <% end %>
             </div>
