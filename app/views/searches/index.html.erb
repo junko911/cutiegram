@@ -1,35 +1,39 @@
-<div class="search-results">
-    <h2>Your search results: </h2>
-    <br>
-    <h3>Users that match your search:</h3><br>
-    <% if !@users.empty? %>
-        <div class="container mt-5">
-            <div class="row profile-pic">
-            <% @users.each do |user| %>
-          
-                    <div class="ml-3">
-                        <%= link_to image_tag(user.image.url(:original), class: "show-pic"), user_path(user) %>
+<div class="container mt-4">
+    <h2 class="mb-4">Your search results</h2>
+    <div class="row">
+        <div class="col-6">
+            <h4>Users that match your search:</h4>
+            <% if !@users.empty? %>
+                <div class="row">
+                    <% @users.each do |user| %>
+                            <div class="col-2">
+                                <%= link_to image_tag(user.image.url(:original), class: "show-pic"), user_path(user) %>
+                            </div>
+                            <div class="col-10">
+                                <p class="mt-2"><%= link_to user.username, user_path(user) %> - <%= user.posts.count %>
+                                <%= " post".pluralize(user.posts.count) %></p>
+                            </div>
+                    <% end %>
+                </div>
+            <% else %>
+                <p>No users match your search.</p>
+            <% end %>
+        </div>
+        <div class="col-6">
+            <h4>Posts that match your search:</h4>
+            <% if !@posts.empty? %>
+                <% @posts.each do |post| %>
+                    <div class="card">
+                        <div class="card-body">
+                            <% if post.image.exists? %>
+                                <%= link_to image_tag(post.image.url(:original), class: "card-img-top"), post_path(post) %>
+                            <% end %>
+                        </div>
                     </div>
-           
-                <h4 class="ml-3 mt-2"><%= link_to user.username, user_path(user) %> - <%= user.posts.count %><%= " post".pluralize(user.posts.count) %> </h4>
-            <% end %>
-            </div>
-        </div>
-    <% else %>
-        <h4>No posts match your search parameters</h4>
-    <% end %><br><br>
-    <h3>Posts that match your search:</h3><br>
-    <% if !@posts.empty? %>
-        <div class="container mt-5">
-            <div class="row">
-            <% @posts.each do |post| %>
-                <% if post.image.exists? %>
-                    <%= link_to image_tag(post.image.url(:original), class: "card-img-top m-2 show"), post_path(post) %>
                 <% end %>
+            <% else %>
+                <p>No posts match your search.</p>
             <% end %>
-            </div>
         </div>
-    <% else %>
-        <h4>No posts match your search parameters</h4>
-    <% end %>
+    </div>
 </div>
