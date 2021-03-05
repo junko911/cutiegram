@@ -1,39 +1,40 @@
 <%= render 'shared/background' %>
+<div class="home">
+  <div class="jumbotron signup">
+    <div class="row">
+      <div class="col">
+        <h1 class="display-3">Welcome to CutieGram!</h1>
+        <h4>Upload your pictures and share them with your friends.</h4>
+      </div>
 
-<div class="jumbotron signup">
-  <div class="row">
-    <div class="col">
-      <h1 class="display-3">Welcome to CutieGram!</h1>
-      <h4>Upload your pictures and share them with your friends.</h4>
-    </div>
+      <div class="col">
+        <%= form_for @user, html: {class: "was-validated"} do |user_builder| %>
+          <div class="form-group">
+              <%= user_builder.label :username %>
+              <%= user_builder.text_field :username, class: "form-control" %>
+              <div class="invalid-feedback">
+                <%= @user.errors[:username].join if @user.errors[:username].any? %>
+              </div>
+          </div>
 
-    <div class="col">
-      <%= form_for @user, html: {class: "was-validated"} do |user_builder| %>
-        <div class="form-group">
-            <%= user_builder.label :username %>
-            <%= user_builder.text_field :username, class: "form-control" %>
-            <div class="invalid-feedback">
-              <%= @user.errors[:username].join if @user.errors[:username].any? %>
-            </div>
-        </div>
+          <div class="form-group">
+              <%= user_builder.label :password %>
+              <%= user_builder.password_field :password, class: "form-control" %>
+              <div class="invalid-feedback">
+                <%= @user.errors[:password].join if @user.errors[:password].any? %>
+              </div>
+          </div>
 
-        <div class="form-group">
-            <%= user_builder.label :password %>
-            <%= user_builder.password_field :password, class: "form-control" %>
-            <div class="invalid-feedback">
-              <%= @user.errors[:password].join if @user.errors[:password].any? %>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <%= user_builder.label :password_confirmation %>
-            <%= user_builder.password_field :password_confirmation, class: "form-control" %>
-            <div class="invalid-feedback">
-              <%= @user.errors[:password_confirmation].join if @user.errors[:password_confirmation].any? %>
-            </div>
-        </div>
-          <%= user_builder.submit 'Sign Up', class: "btn btn-primary btn-lg" %>
-      <% end %>
+          <div class="form-group">
+              <%= user_builder.label :password_confirmation %>
+              <%= user_builder.password_field :password_confirmation, class: "form-control" %>
+              <div class="invalid-feedback">
+                <%= @user.errors[:password_confirmation].join if @user.errors[:password_confirmation].any? %>
+              </div>
+          </div>
+            <%= user_builder.submit 'Sign Up', class: "btn btn-primary btn-lg" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

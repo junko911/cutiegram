@@ -23,6 +23,10 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+.home {
+  height: 100vh;
+}
+
  #videoBG {
   position: fixed;
   z-index: -1;
@@ -46,7 +50,7 @@ body::-webkit-scrollbar {
   #videoBG {
       display: none;
   }
-  body {
+  .home {
       background-image: image-url('bg-cat.jpg');
       background-size: cover;
   }
