@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   root 'posts#index'
   resources :post_tags
   resources :tags, only: [:show]
   resources :posts
   resources :searches
-  
+
   resources :posts do
     resources :comments
   end

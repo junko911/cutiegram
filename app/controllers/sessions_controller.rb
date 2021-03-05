@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
-  skip_before_action :authorized, only: [:new, :create]
+  skip_before_action :authorized, only: %i[new create]
 
   def create
     user = User.find_by(username: params[:session][:username])
 
-    if user && user.authenticate(params[:session][:password])
+    if user&.authenticate(params[:session][:password])
       session[:user_id] = user.id
       redirect_to posts_path
     else
@@ -18,5 +20,4 @@ class SessionsController < ApplicationController
 
     redirect_to new_user_path
   end
-
 end
