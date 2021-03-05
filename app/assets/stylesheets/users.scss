@@ -12,19 +12,6 @@ img.show{
     object-fit: cover;
 }
 
-.settings {
-    margin-top: 50px;
-    text-align: center;
-}
-
-.settings-form {
-    flex-direction: column;
-    max-width: 500px;
-    margin: auto;
-    margin-top: 35px;
-    font-size: x-large;
-}
-
 .profile-header, .show-profile-header {
     display: flex;
     margin-top: 15px;
@@ -76,14 +63,6 @@ img.show{
 
 .user-show-images::-webkit-scrollbar {
     display: none;
-}
-
-.settings-form {
-    max-width: 330px;
-}
-
-.settings-form label {
-    display: block;
 }
 
 .was-validated .form-control:valid {

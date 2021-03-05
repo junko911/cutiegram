@@ -1,29 +1,28 @@
 <%= form_for @user, html: {class: "was-validated"} do |user_builder| %>
-    <div class="settings-form">
-        <%= user_builder.label "Username: " %>
+    <div class="form-group mt-4">
+        <%= user_builder.label "Username" %>
         <%= user_builder.text_field :username, class: "form-control" %>
             <div class="invalid-feedback">
                 <%= @user.errors[:username].join if @user.errors[:username].any? %>
             </div>
-        <br>
-        <div>
-            <%= user_builder.label "Profile Picture: " %>
-            <%= user_builder.file_field :image %>
-        </div><br>
-        <div>
-            <%= user_builder.label "Location: " %>
-            <%= user_builder.text_field :location, class: "form-control" %>
-        </div><br>
-        <div>
-            <%= user_builder.label "Password: " %>
-            <%= user_builder.text_field :password, class: "form-control" %>
-        </div><br>
-        <div>
-            <%= user_builder.label "Confirm Password: " %>
-            <%= user_builder.text_field :password_confirmation, class: "form-control" %>
-            <div class="invalid-feedback">
-                <%= @user.errors[:password_confirmation].join if @user.errors[:password_confirmation].any? %>
-            </div>
+    </div>
+    <div class="form-group">
+        <%= user_builder.label "Profile Picture" %><br>
+        <%= user_builder.file_field :image %>
+    </div>
+    <div class="form-group">
+        <%= user_builder.label "Location" %>
+        <%= user_builder.text_field :location, class: "form-control" %>
+    </div>
+    <div class="form-group">
+        <%= user_builder.label "Password" %>
+        <%= user_builder.text_field :password, class: "form-control" %>
+    </div>
+    <div class="form-group">
+        <%= user_builder.label "Confirm Password" %>
+        <%= user_builder.text_field :password_confirmation, class: "form-control" %>
+        <div class="invalid-feedback">
+            <%= @user.errors[:password_confirmation].join if @user.errors[:password_confirmation].any? %>
         </div>
         <%= user_builder.submit "Update Profile", class: "btn btn-primary btn-lg mt-5 btn-block" %>
     </div>
