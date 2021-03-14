@@ -23,7 +23,7 @@ rails db:migrate
 rails s
 ```
 
-Your app should now be running on [localhost:5000](http://localhost:5000/).
+The project should now be running on [localhost:3000](http://localhost:3000/).
 
 ## Technologies and stack
 
