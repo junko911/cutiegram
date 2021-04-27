@@ -15,7 +15,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.new(post_params(:description, :image))
 
     if @post.save
-      @post.get_tags(params[:post][:image])
+      TagGenerator.call(@post, params[:post][:image])
       redirect_to @post
     else
       render :new
